@@ -1,0 +1,75 @@
+<div class="relative overflow-x-hidden flex align-items-end min-h-screen max-w-screen px-8 m-0 text-white bg-default flex-wrap">
+  <div class="grid flex-auto z-1 pt-4">
+    <div class="col-7">
+      <div class="font-title">
+        <div class="text-2xl text-green-400">
+          Hi, my name is
+        </div>
+        <h1 class="text-7xl font-bold pt-4">
+          Kirill Kesarev<span class="text-green-500 xl">.</span>
+        </h1>
+        <div class="text-6xl text-300">
+          I<span class="text-green-500 xl">'</span>m
+          Node<span class="text-green-500 xl">.</span>js
+          Developer
+        </div>
+        <div class="font-default text-200 grid pt-6">
+          <div class="col-7 py-0 text-lg" style="letter-spacing: .05rem;">
+            Self-educated since 2017 year. Experienced
+            in FullStack development too, but one who's really love challenges
+            that brings Backend Node.js applications
+          </div>
+          <div class="col-5 py-0"></div>
+        </div>
+        <div class="relative mt-4 inline-block overflow-hidden">
+          <p-button
+            pRipple
+            styleClass="p-button-lg p-button-outlined p-button-success"
+            label="Learn More"
+            icon="pi pi-search"
+            iconPos="right"
+            (click)="handleLearnMore()"
+          >
+          </p-button>
+        </div>
+      </div>
+    </div>
+    <div class="col-5 flex justify-content-center align-items-center">
+      <img
+        class="block w-14rem h-14rem z-5 rotate"
+        src="/assets/images/node-icon.png"
+        (dragstart)="handleDrag()"
+        [ngStyle]="{
+          filter: 'drop-shadow(0 0 2rem #222)'
+        }"
+      >
+    </div>
+  </div>
+  <div
+    class="absolute bottom-0 left-50 font-title text-xs text-400 uppercase blink"
+    style="transform: translate(-50%, -50%)"
+  >
+    <div class="line-height-4">Scroll down</div>
+    <div class="text-center"><i class="pi pi-angle-down"></i></div>
+  </div>
+  
+  <app-decoration-grid
+    [color]="'light'"
+    [yPos]="'bottom'"
+    [xPos]="'left'"
+  ></app-decoration-grid>
+
+  <app-decoration-circle
+    [color]="'light'"
+    [yPos]="'top'"
+    [xPos]="'right'"
+    [size]="'large'"
+  ></app-decoration-circle>
+
+  <app-decoration-circle
+    [color]="'light'"
+    [size]="'medium'"
+    [xPos]="'left'"
+    [yPos]="'top'"
+  ></app-decoration-circle>
+</div>

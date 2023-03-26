@@ -1,0 +1,31 @@
+<div class="text-white font-title">
+  <h2
+    class="text-6xl flex align-items-center"
+    [ngClass]="{
+      'justify-content-start': position === 'left',
+      'justify-content-end': position === 'right',
+      'justify-content-center': position === 'center'
+    }"
+  >
+    <div
+      class="flex justify-content-center align-items-center line-height-4 border-bottom-3 border-green-400"
+      [ngStyle]="{
+        width: 'fit-content'
+      }"
+    >
+      <div>
+        {{label}}
+      </div>
+      <div class="pl-4" *ngIf="tooltip">
+        <i
+          class="pi pi-info-circle cursor-pointer"
+          pTooltip="{{tooltip}}" tooltipPosition="top"
+          [ngStyle]="{
+            fontSize: '2.5rem',
+            color: 'var(--green-400)'
+          }"
+        ></i>
+      </div>
+    </div>
+  </h2>
+</div>

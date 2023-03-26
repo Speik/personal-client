@@ -1,0 +1,28 @@
+<nav
+  class="fixed left-0 top-0 w-full px-8 text-white font-title text-4xl"
+  [ngClass]="{
+    'in-motion': isPageScrolled
+  }"
+>
+  <div class="flex justify-content-between align-items-center">
+    <div
+      class="mail-container relative flex align-items-center"
+      [ngClass]="{
+        'pl-3': isPageScrolled
+      }"
+    >
+      <a
+        href="mailto:{{email}}"
+        class="no-underline font-bold font-default text-lg text-white hover:text-green-400 transition-duration-300 transition-ease-in-out"
+      >
+        {{email}}
+      </a>
+    </div>
+    <div>
+      <p-button
+        icon="pi pi-bars"
+        styleClass="p-button-lg p-button-rounded p-button-success p-button-text"
+      ></p-button>
+    </div>
+  </div>
+</nav>

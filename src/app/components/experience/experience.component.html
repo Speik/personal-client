@@ -1,0 +1,172 @@
+<div
+  id="jobs"
+  class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-dark"
+>
+
+  <app-page-title
+    label="My Jobs"
+    tooltip="{{getTooltip()}}"
+    position="center"
+  ></app-page-title>
+
+  <app-decoration-circle
+    [color]="'light'"
+    [size]="'medium'"
+    [xPos]="'left'"
+    [yPos]="'bottom'"
+  ></app-decoration-circle>
+
+  <app-decoration-circle
+    [color]="'light'"
+    [size]="'small'"
+    [xPos]="'right'"
+    [yPos]="'top'"
+  ></app-decoration-circle>
+
+  <app-decoration-grid
+    [color]="'light'"
+    [xPos]="'right'"
+    [yPos]="'bottom'"
+  >
+  </app-decoration-grid>
+
+  <div class="mt-8 text-white improved-carousel no-carousel-dots carousel-gap carousel-elevate-tail">
+    <p-carousel [value]="experienceService.experience" [numVisible]="3" [numScroll]="1">
+      <ng-template let-experience pTemplate="item">
+          <div class="ml-8 select-none">
+            <div
+              pRipple
+              pTooltip="Click for details" tooltipPosition="right"
+              class="square text-shadow font-default parallelogram cursor-pointer shadow-7 hover-increase transition-duration-300 transition-ease-in-out border-3 border-green-400 border-top-none border-x-none"
+              [style]="{
+                webkitBackdropFilter: 'blur(5px)',
+                backdropFilter: 'blur(5px)',
+                backgroundColor: 'rgba(50, 50, 50, 0.4)'
+              }"
+              (click)="showExperienceDetails(experience)"
+            >
+              <div class="flex flex-column justify-content-between square-content p-4">
+                <div class="flex-initial font-title font-bold text-3xl text-green-400">
+                  {{ experience.employerName }}
+                </div>
+                <div class="flex-auto flex align-items-center">
+                  <div class="font-title pl-2 text-xl border-2 border-green-400 border-y-none border-right-none line-height-3">
+                    {{ experience.jobTitle }}
+                  </div>
+                </div>
+                <div class="flex-initial">
+                  <div class="text-lg text-green-400">
+                    {{ experience.employedAt | date: 'MMM y' }} -
+                    {{ experience.leaveAt | date: 'MMM y' }}
+                  </div>
+                  <div class="text-center pt-1">
+                    <small>
+                      <i class="pi pi-clock"></i>
+                      {{getDisplayExperience(experience)}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+
+  <p-dialog
+    header="Header"
+    styleClass="fullscreen-dialog"
+    [(visible)]="experienceModalDetails.isVisible"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+  >
+
+    <ng-template pTemplate="header" class="relative">
+      <h2 class="relative pl-4 border-green-400 border-left-3" [ngStyle]="{ zIndex: 2205 }">
+        <div class="text-5xl text-green-400 font-bold font-title mr-2">
+          {{experienceModalDetails.data?.jobTitle}}
+        </div>
+        <div class="text-2xl text-400 font-bold font-title">
+          {{experienceModalDetails.data?.employerName}}
+        </div>
+      </h2>
+
+      <app-decoration-grid
+        [color]="'light'"
+        [xPos]="'left'"
+        [yPos]="'top'"
+      >
+      </app-decoration-grid>
+
+      <app-decoration-circle
+        [color]="'light'"
+        [size]="'medium'"
+        [xPos]="'right'"
+        [yPos]="'top'"
+      ></app-decoration-circle>
+    </ng-template>
+
+    <div class="grid relative" [ngStyle]="{ zIndex: 2205 }">
+      <div class="col-6">
+        <p
+          class="text-xl text-white font-default"
+          [innerHTML]="formatDescription(experienceModalDetails.data?.description)"
+        >
+        </p>
+      </div>
+      <div class="col-2"></div>
+      <div class="col-4">
+
+        <div class="text-white text-2xl flex justify-content-start align-items-center">
+          <div class="flex justify-content-start align-items-center">
+            <div class="text-green-400 font-title">
+              <div>From</div>
+              <div>To</div>
+              <div class="pt-3">Total</div>
+            </div>
+            <div class="pl-3">
+              <div>
+                {{experienceModalDetails.data?.employedAt | date: 'MMM, y'}}
+              </div>
+              <div>
+                {{experienceModalDetails.data?.leaveAt | date: 'MMM, y'}}
+              </div>
+              <div class="pt-3">
+                {{getDisplayExperience(experienceModalDetails.data)}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8">
+          <div
+            *ngFor="let skill of experienceModalDetails.data?.skills"
+            class="inline-block mr-3 mb-3"
+          >
+          <p-chip
+            label="{{skill}}"
+            styleClass="select-none cursor-default text-lg transparent-chip text-green-400 font-bold border-green-400 border-1 border-round-2xl"
+          ></p-chip>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-decoration-grid
+      [color]="'light'"
+      [xPos]="'right'"
+      [yPos]="'bottom'"
+    >
+    </app-decoration-grid>
+
+    <app-decoration-circle
+      [color]="'light'"
+      [size]="'small'"
+      [xPos]="'left'"
+      [yPos]="'bottom'"
+    ></app-decoration-circle>
+
+  </p-dialog>
+
+</div>

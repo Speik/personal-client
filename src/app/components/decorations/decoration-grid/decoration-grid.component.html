@@ -1,0 +1,18 @@
+<img
+  class="block absolute"
+  (dragstart)="handleDrag()"
+  [ngClass]="{
+    'bottom-0': yPos === 'bottom',
+    'top-0': yPos === 'top',
+    'left-0': xPos === 'left',
+    'right-0': xPos === 'right',
+    'opacity-10 w-24rem h-16rem': color === 'light',
+    'w-10rem h-10rem': color === 'dark'
+  }"
+  [ngStyle]="{ zIndex }"
+  src="/assets/images/{{
+    color === 'dark'
+      ? 'decoration-grid-dark.png'
+      : 'decoration-grid-light.png'
+  }}"
+>
