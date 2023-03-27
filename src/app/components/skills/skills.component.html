@@ -1,10 +1,11 @@
 <div
-  id="skills"
+id="skills"
   class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-default"
 >
 <app-page-title
   label="Skills"
   position="left"
+  tooltip="Only core skills were presented"
 ></app-page-title>
 
 <app-decoration-circle
@@ -34,5 +35,51 @@
   [yPos]="'top'"
   >
 </app-decoration-grid>
+
+  <div class="grid py-5 mt-8">
+    <div class="col-4">
+      <div class="text-white text-2xl font-default">
+        <p class="mb-4 pl-4 border-green-400 border-left-3">
+          I have proficiency both in Backend and Frontend with,
+          I beleive, high code quality and readability.
+        </p>
+          
+        <p class="pl-4 border-green-400 border-left-3">
+          Even if I have lack of knowledge,
+          I am always able to learn new technology to solve a task.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-8 flex justify-content-between align-items-start flex-wrap">
+
+      <div
+        appMouseParallax
+        class="pl-4 w-6"
+        *ngFor="let skill of skillsService.skills; let index = index"
+        [ngClass]="{
+          'pb-4': ![4, 5].includes(index)
+        }"
+      >
+        <div
+          pRipple
+          class="bg-card p-5 border-green-400 border-3 border-y-none border-right-none shadow-7"
+        >
+          <div class="text-white font-title select-none">
+            <span class="text-green-400 text-xl">{{skill.name}}</span>
+            - {{skill.proficiency}}%
+          </div>
+          <div class="pt-3">
+            <p-progressBar
+              [value]="skill.proficiency"
+              [showValue]="false"
+              styleClass="improved-progressbar"
+            ></p-progressBar>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

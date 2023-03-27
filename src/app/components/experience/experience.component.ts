@@ -23,8 +23,6 @@ type ExperienceModalDetails = {
   templateUrl: './experience.component.html',
 })
 export class ExperienceComponent implements AfterViewInit {
-  isLoading: boolean = false;
-
   experienceModalDetails: ExperienceModalDetails = {
     isVisible: false,
     data: null,
@@ -37,11 +35,7 @@ export class ExperienceComponent implements AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoading = true;
-
-    this.experienceService.getAll().subscribe(() => {
-      this.isLoading = false;
-    });
+    this.experienceService.getAll().subscribe();
   }
 
   ngAfterViewInit(): void {

@@ -15,6 +15,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { ChipModule } from 'primeng/chip';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { MainPageComponent } from './pages/main/main-page.component';
@@ -22,6 +23,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { MouseParallaxDirective } from './components/decorations/directives/mouse-parallax.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { SkillsComponent } from './components/skills/skills.component';
     PageTitleComponent,
     NavigationComponent,
     SkillsComponent,
+    MouseParallaxDirective,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { SkillsComponent } from './components/skills/skills.component';
     DialogModule,
     BrowserAnimationsModule,
     ChipModule,
+    ProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

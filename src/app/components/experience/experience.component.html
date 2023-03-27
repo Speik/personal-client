@@ -1,5 +1,5 @@
 <div
-  id="jobs"
+  id="experience"
   class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-dark"
 >
 
@@ -30,19 +30,14 @@
   >
   </app-decoration-grid>
 
-  <div class="mt-8 text-white improved-carousel no-carousel-dots carousel-gap carousel-elevate-tail">
+  <div class="mt-6 text-white improved-carousel no-carousel-dots carousel-gap carousel-elevate-tail">
     <p-carousel [value]="experienceService.experience" [numVisible]="3" [numScroll]="1">
       <ng-template let-experience pTemplate="item">
           <div class="ml-8 select-none">
             <div
               pRipple
               pTooltip="Click for details" tooltipPosition="right"
-              class="square text-shadow font-default parallelogram cursor-pointer shadow-7 hover-increase transition-duration-300 transition-ease-in-out border-3 border-green-400 border-top-none border-x-none"
-              [style]="{
-                webkitBackdropFilter: 'blur(5px)',
-                backdropFilter: 'blur(5px)',
-                backgroundColor: 'rgba(50, 50, 50, 0.4)'
-              }"
+              class="square text-shadow font-default parallelogram cursor-pointer shadow-7 hover-increase transition-duration-300 transition-ease-in-out border-3 border-green-400 border-top-none border-x-none bg-card"
               (click)="showExperienceDetails(experience)"
             >
               <div class="flex flex-column justify-content-between square-content p-4">
