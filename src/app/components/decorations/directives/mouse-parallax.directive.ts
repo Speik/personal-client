@@ -55,13 +55,11 @@ export class MouseParallaxDirective implements AfterViewInit {
   onMouseEnter() {
     if (!this.content) return;
 
-    const initialStyles = {
+    Object.assign(this.content.nativeElement.style, {
       transitionDuration: `${ANIMATION_DURATION_MS}ms`,
       transitionTimingFunction: 'ease-out',
       transformStyle: 'preserve-3d',
-    };
-
-    Object.assign(this.content.nativeElement.style, initialStyles);
+    });
   }
 
   @HostListener('mouseleave')

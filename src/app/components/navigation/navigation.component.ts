@@ -12,7 +12,7 @@ export class NavigationComponent {
   email: string = PERSONAL_EMAIL;
 
   @HostListener('window:scroll', [])
-  onWindowScroll() {
+  onWindowScroll(): void {
     this.isPageScrolled = window.scrollY > 100;
   }
 }

@@ -1,0 +1,96 @@
+<div
+  id="contact"
+  class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-dark"
+>
+  <app-page-title
+    label="Contact Me"
+    position="center"
+  ></app-page-title>
+
+  <app-decoration-circle
+    [color]="'light'"
+    [size]="'large'"
+    [xPos]="'right'"
+    [yPos]="'bottom'"
+  ></app-decoration-circle>
+
+  <app-decoration-circle
+    [color]="'light'"
+    [size]="'small'"
+    [xPos]="'left'"
+    [yPos]="'bottom'"
+  ></app-decoration-circle>
+
+  <app-decoration-grid
+    [color]="'light'"
+    [xPos]="'left'"
+    [yPos]="'top'"
+  >
+  </app-decoration-grid>
+
+  <div>
+    <div class="text-white text-4xl text-center pt-4">
+      Have a question? Feel free to ask!
+    </div>
+
+    <div class="flex justify-content-center align-items-center pt-8">
+      <div class="w-7">
+        <form>
+          <div class="grid">
+            <div class="col-6">
+              <span class="p-float-label w-full">
+                <input
+                  pInputText
+                  class="p-inputtext-lg"
+                  id="contactName"
+                  name="name"
+                  type="text"
+                  [(ngModel)]="contactData.name"
+                />
+                <label htmlFor="contactName">Name</label>
+              </span>
+            </div>
+            <div class="col-6">
+              <span class="p-float-label w-full">
+                <input
+                  pInputText
+                  class="p-inputtext-lg"
+                  id="contactEmail"
+                  name="email"
+                  type="email"
+                  [(ngModel)]="contactData.email"
+                />
+                <label htmlFor="contactEmail">Email</label>
+              </span>
+            </div>
+            <div class="col-12 pt-4">
+              <span class="p-float-label w-full">
+                <textarea
+                  pInputTextarea
+                  class="p-inputtext-lg"
+                  id="contactText"
+                  name="text"
+                  [autoResize]="true"
+                  [(ngModel)]="contactData.text"
+                  ></textarea>
+                <label for="contactText">Text</label>
+              </span>
+            </div>
+            <div class="flex justify-content-center align-items-center col-12 pt-4">
+              <p-button
+                pRipple
+                styleClass="p-button-lg p-button-outlined p-button-success"
+                label="Submit"
+                icon="pi pi-upload"
+                iconPos="right"
+                (click)="handleSubmit()"
+              >
+              </p-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

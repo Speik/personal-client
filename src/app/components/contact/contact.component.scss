@@ -1,0 +1,33 @@
+.p-inputtext, .p-inputtextarea {
+  width: 100% !important;
+  font-family: var(--font-default);
+
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px) !important;
+  background-color: #32323266;
+
+  border: 1px solid var(--bg-default);
+  color: white;
+
+  &:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem var(--green-400);
+    border-color: var(--green-500);
+  }
+
+  &:enabled:hover {
+    border-color: var(--green-500);
+  }
+}
+
+.p-inputtextarea {
+  min-height: 20rem;
+}
+
+.p-float-label {
+  label {
+    font-family: var(--font-title);
+    color: var(--green-400) !important;
+  }
+}

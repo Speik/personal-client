@@ -15,7 +15,7 @@ const DESCRIPTION_SEGMENT_FORMAT = `
 type ExperienceFormat = { years: number; months: number };
 type ExperienceModalDetails = {
   isVisible: boolean;
-  data: IExperience | null;
+  data: Nullable<IExperience>;
 };
 
 @Component({
@@ -73,7 +73,7 @@ export class ExperienceComponent implements AfterViewInit {
     };
   }
 
-  getDisplayExperience(experience: IExperience | null): string {
+  getDisplayExperience(experience: Nullable<IExperience>): string {
     if (!experience) {
       return 'Unable to count experience';
     }
@@ -89,13 +89,13 @@ export class ExperienceComponent implements AfterViewInit {
     return `${displayYears} ${displayMonths}`;
   }
 
-  getTooltip(): string {
+  getTitleTooltip(): string {
     const totalExperience = this.countTotalExperience();
     const { years, months } = this.formatExperienceFromMonths(totalExperience);
 
     const result = Boolean(months) ? `${years}y ${months}mo` : `${years}y`;
 
-    return `Currently I have ${result} commerical experience`;
+    return `Currently I have ${result} of working experience`;
   }
 
   showExperienceDetails(experience: IExperience): void {

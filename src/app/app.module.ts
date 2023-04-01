@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { ChipModule } from 'primeng/chip';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { MainPageComponent } from './pages/main/main-page.component';
@@ -24,6 +27,7 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { MouseParallaxDirective } from './components/decorations/directives/mouse-parallax.directive';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +42,11 @@ import { MouseParallaxDirective } from './components/decorations/directives/mous
     NavigationComponent,
     SkillsComponent,
     MouseParallaxDirective,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ButtonModule,
     CarouselModule,
@@ -50,6 +56,8 @@ import { MouseParallaxDirective } from './components/decorations/directives/mous
     BrowserAnimationsModule,
     ChipModule,
     ProgressBarModule,
+    InputTextModule,
+    InputTextareaModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
