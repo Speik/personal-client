@@ -19,6 +19,7 @@ import { ChipModule } from 'primeng/chip';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ToastModule } from 'primeng/toast';
 
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { MainPageComponent } from './pages/main/main-page.component';
@@ -58,6 +59,7 @@ import { ContactComponent } from './components/contact/contact.component';
     ProgressBarModule,
     InputTextModule,
     InputTextareaModule,
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
