@@ -35,4 +35,14 @@ nav {
       }
     }
   }
+
+  .scroll-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 4px;
+    background-color: var(--green-400);
+    transition: height .5s ease-out;
+  }
 }

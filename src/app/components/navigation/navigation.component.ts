@@ -14,6 +14,8 @@ type NavlinkTargetId = 'skills' | 'experience' | 'contact';
 export class NavigationComponent {
   isPageScrolled = false;
   isSidebarVisible = false;
+
+  pageScrolledPercents = 0;
   email: string = PERSONAL_EMAIL;
 
   constructor(
@@ -24,6 +26,18 @@ export class NavigationComponent {
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
     this.isPageScrolled = window.scrollY > 100;
+    this.pageScrolledPercents = this.getPageScrolledPercents();
+  }
+
+  getPageScrolledPercents(): number {
+    const documentHeight = this.document.body.scrollHeight - window.innerHeight;
+    const scrolledPercents = window.scrollY / (documentHeight / 100);
+
+    if (window.scrollY <= 0) {
+      return 0;
+    }
+
+    return Number(scrolledPercents.toFixed(2));
   }
 
   showSidebar(): void {

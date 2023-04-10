@@ -4,6 +4,12 @@
     'in-motion': isPageScrolled
   }"
 >
+  <div
+    class="scroll-indicator max-h-full"
+    [ngStyle]="{ height: pageScrolledPercents + '%'}"
+  >
+  </div>
+
   <div class="flex justify-content-between align-items-center">
     <div
       class="mail-container relative flex align-items-center"
