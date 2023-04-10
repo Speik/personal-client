@@ -3,9 +3,9 @@
 @mixin font-title { font-family: 'Orbitron', sans-serif; }
 @mixin font-default { font-family: 'Exo', sans-serif; }
 @mixin bg-card {
-  -webkit-backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
-  background-color: rgba(50, 50, 50, 0.4);
+  background-color: rgba(50, 50, 50, 0.4) !important;
 }
 
 :root {
@@ -77,11 +77,14 @@ html, body {
 .font-title { @include font-title; }
 .font-default { @include font-default; }
 
-.bg-default { background-color: var(--bg-default); }
-.bg-dark { background-color: var(--bg-dark); }
+.bg-default { background-color: var(--bg-default) !important; }
+.bg-dark { background-color: var(--bg-dark) !important; }
 .bg-card { @include bg-card; }
 
 .cursor-default { cursor: default !important; }
+
+.list-style-inside { list-style-position: inside !important; }
+.list-style-outside { list-style-position: outside !important; }
 
 .center-top-left { transform: translate(-50%, -50%) !important; }
 .center-top-right { transform: translate(50%, -50%) !important; }
@@ -200,5 +203,24 @@ html, body {
   
   .p-progressbar-value {
     background: var(--green-400);
+  }
+}
+
+.p-sidebar-header {
+  h2 {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      background-color: var(--green-400);
+    }
+  }
+
+  .p-sidebar-close {
+    scale: 1.35;
   }
 }

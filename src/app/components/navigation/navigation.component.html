@@ -22,7 +22,60 @@
       <p-button
         icon="pi pi-bars"
         styleClass="p-button-lg p-button-rounded p-button-success p-button-text"
+        (click)="showSidebar()"
       ></p-button>
     </div>
   </div>
 </nav>
+
+<p-sidebar
+  [(visible)]="isSidebarVisible"
+  styleClass="w-3 bg-default text-white"
+  position="right"
+>
+
+  <ng-template pTemplate="header">
+    <h2 class="relative pl-3 font-title">Kirill Kesarev</h2>
+  </ng-template>
+
+  <ng-template pTemplate="content" styleClass="pt-4">
+    <div class="pt-2">
+      <ul class="text-green-400 list-none">
+        <li class="pt-2">
+          <p-button
+            styleClass="p-button-success p-button-text"
+            (onClick)="handleNavlink('skills')"
+          >
+            <i class="pi pi-bolt text-2xl"></i>
+            <span class="text-2xl font-title font-bold pl-3 text-white">
+              Skills
+            </span>
+          </p-button>
+        </li>
+        <li class="pt-2">
+          <p-button
+            styleClass="p-button-success p-button-text"
+            (onClick)="handleNavlink('experience')"
+          >
+            <i class="pi pi-briefcase text-2xl"></i>
+            <span class="text-2xl font-title font-bold pl-3 text-white">
+              Jobs
+            </span>
+          </p-button>
+        </li>
+        <li class="pt-2">
+          <p-button
+            styleClass="p-button-success p-button-text"
+            (onClick)="handleNavlink('contact')"
+          >
+            <i class="pi pi-phone text-2xl"></i>
+            <span class="text-2xl font-title font-bold pl-3 text-white">
+              Contact
+            </span>
+          </p-button>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+
+</p-sidebar>
