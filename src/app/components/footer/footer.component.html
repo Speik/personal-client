@@ -1,0 +1,56 @@
+<footer
+  class="relative overflow-hidden max-w-screen px-8 pb-4 pt-8 m-0 bg-default"
+>
+  <app-decoration-circle
+    [color]="'light'"
+    [size]="'small'"
+    [xPos]="'right'"
+    [yPos]="'bottom'"
+  ></app-decoration-circle>
+
+  <app-decoration-grid
+    [color]="'light'"
+    [xPos]="'left'"
+    [yPos]="'top'"
+  >
+  </app-decoration-grid>
+
+  <div class="relative mx-auto w-8 z-1">
+    <div class="flex justify-content-between align-items-center flex-wrap">
+
+      <ul class="list-none flex justify-content-center align-items-center flex-wrap w-6">
+        <li
+          class="footer-social-link flex-initial w-6"
+          *ngFor="let link of socialLinks; let index = index;"
+          [ngClass]="{
+            'pt-2': [2, 3].includes(index)
+          }"
+        >
+          <a
+            href="{{link.url}}"
+            target="_blank"
+            class="text-400 no-underline text-2xl"
+          >
+            <i class="pi pi-{{link.iconName}} text-2xl"></i>
+            <span class="pl-3">{{link.label}}</span>
+          </a>
+        </li>
+      </ul>
+  
+      <div
+        class="flex justify-content-center align-items-center border-green-400 border-left-3 w-6"
+      >
+        <p-button
+          icon="pi pi-file"
+          label="Download CV"
+          styleClass="p-button-outlined p-button-success p-button-lg"
+        ></p-button>
+      </div>
+
+      <div class="w-full pt-6 text-600 text-lg text-center">
+        Homemade with <i class="pi pi-heart-fill text-green-700"></i> and Angular &copy; {{getCurrentYear()}}
+      </div>
+  
+    </div>
+  </div>
+</footer>

@@ -30,6 +30,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { SkillsComponent } from './components/skills/skills.component';
 import { MouseParallaxDirective } from './components/decorations/directives/mouse-parallax.directive';
 import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ContactComponent } from './components/contact/contact.component';
     SkillsComponent,
     MouseParallaxDirective,
     ContactComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
