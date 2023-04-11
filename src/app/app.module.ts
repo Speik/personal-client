@@ -1,15 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-import { DecorationGridComponent } from './components/decorations/decoration-grid/decoration-grid.component';
-import { DecorationCircleComponent } from './components/decorations/decoration-circle/decoration-circle.component';
-import { BlockSeparatorComponent } from './components/decorations/block-separator/block-separator.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { CarouselModule } from 'primeng/carousel';
@@ -21,6 +14,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
 import { SidebarModule } from 'primeng/sidebar';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { DecorationGridComponent } from './components/decorations/decoration-grid/decoration-grid.component';
+import { DecorationCircleComponent } from './components/decorations/decoration-circle/decoration-circle.component';
+import { BlockSeparatorComponent } from './components/decorations/block-separator/block-separator.component';
 
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { MainPageComponent } from './pages/main/main-page.component';
@@ -51,6 +53,7 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     ButtonModule,
     CarouselModule,
@@ -64,6 +67,8 @@ import { FooterComponent } from './components/footer/footer.component';
     InputTextareaModule,
     ToastModule,
     SidebarModule,
+    MessageModule,
+    MessagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

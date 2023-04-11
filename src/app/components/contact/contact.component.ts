@@ -1,11 +1,17 @@
+import {
+  AbstractControl,
+  FormBuilder,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { ICustomer } from './contact.model';
 
-type ContactData = {
-  name: Nullable<string>;
-  email: Nullable<string>;
-  text: Nullable<string>;
-};
+const MAX_NAME_LENGTH = 48;
+const MIN_MESSAGE_LENGTH = 16;
+const MAX_MESSAGE_LENGTH = 320;
 
 @Component({
   selector: 'app-contact',
@@ -14,18 +20,95 @@ type ContactData = {
   providers: [MessageService],
 })
 export class ContactComponent {
-  contactData: ContactData = { name: null, email: null, text: null };
+  public isLoading = false;
 
-  constructor(private messageService: MessageService) {}
+  public readonly maxNameLength = MAX_NAME_LENGTH;
+  public readonly maxMessageLength = MAX_MESSAGE_LENGTH;
+  public readonly minMessageLength = MIN_MESSAGE_LENGTH;
 
-  handleSubmit(): void {
-    console.log(this.contactData);
+  public readonly contactForm = this.fb.group({
+    name: ['', [Validators.required, Validators.maxLength(MAX_NAME_LENGTH)]],
+    email: ['', [Validators.required, Validators.email]],
+    message: [
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(MAX_MESSAGE_LENGTH),
+        this.trimmedMessageValidator,
+      ],
+    ],
+  });
 
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Message sent!',
-      life: 1500,
+  constructor(
+    private fb: FormBuilder,
+    private messageService: MessageService
+  ) {}
+
+  public handleContactFormSubmit(): void {
+    if (!this.contactForm.valid) {
+      return;
+    }
+
+    const customerData = this.exposeCustomerData();
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Message sent: ' + JSON.stringify(customerData),
+        life: 1500,
+      });
+
+      this.clearContactForm();
+      this.isLoading = false;
+    }, 1000);
+  }
+
+  public handleContactFormChange(): void {
+    this.aggregateErrors();
+  }
+
+  private aggregateErrors(): void {
+    const form = this.contactForm;
+
+    const errors = Object.entries(form.controls).reduce<ValidationErrors>(
+      (result, [key, { errors }]) => {
+        return { ...result, [key]: errors };
+      },
+      {}
+    );
+
+    const isFormValid = Object.values(errors).every((item) => item === null);
+    form.setErrors(isFormValid ? null : errors);
+  }
+
+  private exposeCustomerData(): ICustomer {
+    const form = this.contactForm;
+
+    return <ICustomer>Object.entries(form.controls).reduce<Partial<ICustomer>>(
+      (data, [key, control]) => ({
+        ...data,
+        [key]: control.value?.trim() ?? '',
+      }),
+      {}
+    );
+  }
+
+  private clearContactForm(): void {
+    Object.values(this.contactForm.controls).forEach((control) => {
+      control.setValue(null);
+      control.setErrors(null);
     });
+  }
+
+  private trimmedMessageValidator(
+    target: AbstractControl
+  ): Nullable<ValidationErrors> {
+    const actualLength = target.value?.trim()?.length ?? 0;
+
+    if (actualLength > MIN_MESSAGE_LENGTH) return null;
+    // It's not a typo. minlength key is used to emulate default error
+    return { minlength: { requiredLength: MIN_MESSAGE_LENGTH, actualLength } };
   }
 }

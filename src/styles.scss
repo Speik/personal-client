@@ -224,3 +224,8 @@ html, body {
     scale: 1.35;
   }
 }
+
+.p-inline-message.p-inline-message-error {
+  .p-inline-message-text { color: var(--red-300) !important; }
+  .p-inline-message-icon { color: var(--red-300) !important; }
+}
