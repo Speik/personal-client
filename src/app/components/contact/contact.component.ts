@@ -65,11 +65,7 @@ export class ContactComponent {
     }, 1000);
   }
 
-  public handleContactFormChange(): void {
-    this.aggregateErrors();
-  }
-
-  private aggregateErrors(): void {
+  public handleContactFormErrors(): void {
     const form = this.contactForm;
 
     const errors = Object.entries(form.controls).reduce<ValidationErrors>(

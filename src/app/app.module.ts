@@ -20,6 +20,8 @@ import { MessagesModule } from 'primeng/messages';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { MouseParallaxDirective } from './directives/mouse-parallax.directive';
+
 import { DecorationGridComponent } from './components/decorations/decoration-grid/decoration-grid.component';
 import { DecorationCircleComponent } from './components/decorations/decoration-circle/decoration-circle.component';
 import { BlockSeparatorComponent } from './components/decorations/block-separator/block-separator.component';
@@ -30,7 +32,6 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SkillsComponent } from './components/skills/skills.component';
-import { MouseParallaxDirective } from './components/decorations/directives/mouse-parallax.directive';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 
