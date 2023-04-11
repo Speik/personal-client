@@ -60,7 +60,7 @@ export class ContactComponent {
         life: 1500,
       });
 
-      this.clearContactForm();
+      this.contactForm.reset();
       this.isLoading = false;
     }, 1000);
   }
@@ -93,13 +93,6 @@ export class ContactComponent {
       }),
       {}
     );
-  }
-
-  private clearContactForm(): void {
-    Object.values(this.contactForm.controls).forEach((control) => {
-      control.setValue(null);
-      control.setErrors(null);
-    });
   }
 
   private trimmedMessageValidator(

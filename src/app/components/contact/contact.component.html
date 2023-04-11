@@ -149,15 +149,18 @@
             <div class="flex justify-content-center align-items-center col-12 pt-4">
               <p-toast position="bottom-center"></p-toast>
               <p-button
-                pRipple
                 styleClass="p-button-lg p-button-outlined p-button-success"
+                [attr.pRipple]="contactForm.valid"
+                [loading]="isLoading"
+                [disabled]="!contactForm.valid"
                 label="Submit"
                 icon="pi pi-upload"
                 iconPos="right"
                 (click)="handleContactFormSubmit()"
-                [loading]="isLoading"
-                [disabled]="!contactForm.valid"
+                [pTooltip]="!contactForm.valid ? 'Fill all required fields': ''"
+                tooltipPosition="top"
               >
+                <span></span>
               </p-button>
             </div>
           </div>
