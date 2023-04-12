@@ -34,6 +34,7 @@ export class ContactComponent {
       [
         Validators.required,
         Validators.maxLength(MAX_MESSAGE_LENGTH),
+        Validators.minLength(MIN_MESSAGE_LENGTH),
         this.trimmedMessageValidator,
       ],
     ],
@@ -96,7 +97,7 @@ export class ContactComponent {
   ): Nullable<ValidationErrors> {
     const actualLength = target.value?.trim()?.length ?? 0;
 
-    if (actualLength > MIN_MESSAGE_LENGTH) return null;
+    if (actualLength >= MIN_MESSAGE_LENGTH) return null;
     // It's not a typo. minlength key is used to emulate default error
     return { minlength: { requiredLength: MIN_MESSAGE_LENGTH, actualLength } };
   }
