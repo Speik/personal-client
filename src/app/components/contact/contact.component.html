@@ -28,144 +28,142 @@
   >
   </app-decoration-grid>
 
-  <div>
+  <div class="w-8 mx-auto">
     <div class="text-white text-4xl text-center pt-4">
       Have a question? Feel free to ask!
     </div>
 
     <div class="flex justify-content-center align-items-center pt-8">
-      <div class="w-7">
-        <form [formGroup]="contactForm">
-          <div class="grid">
-            <div class="col-6">
-              <span class="p-float-label w-full">
-                <input
-                  pInputText
-                  class="p-inputtext-lg"
-                  id="contactName"
-                  name="name"
-                  type="text"
-                  formControlName="name"
-                  maxlength="{{maxNameLength}}"
-                  (change)="handleContactFormErrors()"
-                />
-                <label htmlFor="contactName">* Name</label>
-              </span>
-            </div>
-            <div class="col-6">
-              <span class="p-float-label w-full">
-                <input
-                  pInputText
-                  class="p-inputtext-lg"
-                  id="contactEmail"
-                  name="email"
-                  type="email"
-                  formControlName="email"
-                  (change)="handleContactFormErrors()"
-                />
-                <label htmlFor="contactEmail">* Email</label>
-              </span>
-            </div>
-            <div class="col-12 pt-4">
-              <span class="p-float-label w-full">
-                <textarea
-                  pInputTextarea
-                  class="p-inputtext-lg"
-                  id="contactMessage"
-                  name="message"
-                  [autoResize]="true"
-                  formControlName="message"
-                  minlength="{{minMessageLength}}"
-                  maxlength="{{maxMessageLength}}"
-                  (change)="handleContactFormErrors()"
-                  ></textarea>
-                <label for="contactMessage">* Message</label>
-              </span>
-              <div class="text-sm text-500 pt-2">
-                {{contactForm.controls['message'].value?.trim()?.length ?? 0}} /
-                <span class="text-green-400">{{maxMessageLength}}</span>
-              </div>
-            </div>
-            <div
-              class="flex justify-content-start flex-wrap gap-2 col-12 pt-2 z-1"
-            >
-
-              <p-message
-                *ngIf="(
-                  contactForm.errors?.['name']?.required &&
-                  contactForm.controls['name'].touched &&
-                  contactForm.controls['name'].dirty
-                )"
-                severity="error"
-                text="Name is required"
-                styleClass="bg-card"
-              ></p-message>
-
-              <p-message
-                *ngIf="(
-                  contactForm.errors?.['email']?.required &&
-                  contactForm.controls['email'].touched &&
-                  contactForm.controls['email'].dirty
-                )"
-                severity="error"
-                text="Email is required"
-                styleClass="bg-card"
-              ></p-message>
-
-              <p-message
-                *ngIf="(
-                  contactForm.errors?.['email']?.email &&
-                  contactForm.controls['email'].touched &&
-                  contactForm.controls['email'].dirty
-                )"
-                severity="error"
-                text="Email is invalid"
-                styleClass="bg-card"
-              ></p-message>
-
-              <p-message
-                *ngIf="(
-                  contactForm.errors?.['message']?.required &&
-                  contactForm.controls['message'].touched &&
-                  contactForm.controls['message'].dirty
-                )"
-                severity="error"
-                text="Message is required"
-                styleClass="bg-card"
-              ></p-message>
-
-              <p-message
-                *ngIf="(
-                  contactForm.errors?.['message']?.minlength &&
-                  contactForm.controls['message'].touched &&
-                  contactForm.controls['message'].dirty
-                )"
-                severity="error"
-                text="Min message length is {{minMessageLength}}"
-                styleClass="bg-card"
-              ></p-message>
-
-            </div>
-            <div class="flex justify-content-center align-items-center col-12 pt-4">
-              <p-toast position="bottom-center"></p-toast>
-              <p-button
-                styleClass="p-button-lg p-button-outlined p-button-success"
-                [attr.pRipple]="contactForm.valid"
-                [loading]="isLoading"
-                [disabled]="!contactForm.valid"
-                label="Submit"
-                icon="pi pi-upload"
-                iconPos="right"
-                (click)="handleContactFormSubmit()"
-                [pTooltip]="!contactForm.valid ? 'Fill all required fields': ''"
-                tooltipPosition="top"
-              >
-                <span></span>
-              </p-button>
+      <form [formGroup]="contactForm">
+        <div class="grid">
+          <div class="col-6">
+            <span class="p-float-label w-full">
+              <input
+                pInputText
+                class="p-inputtext-lg"
+                id="contactName"
+                name="name"
+                type="text"
+                formControlName="name"
+                maxlength="{{maxNameLength}}"
+                (change)="handleContactFormErrors()"
+              />
+              <label htmlFor="contactName">* Name</label>
+            </span>
+          </div>
+          <div class="col-6">
+            <span class="p-float-label w-full">
+              <input
+                pInputText
+                class="p-inputtext-lg"
+                id="contactEmail"
+                name="email"
+                type="email"
+                formControlName="email"
+                (change)="handleContactFormErrors()"
+              />
+              <label htmlFor="contactEmail">* Email</label>
+            </span>
+          </div>
+          <div class="col-12 pt-4">
+            <span class="p-float-label w-full">
+              <textarea
+                pInputTextarea
+                class="p-inputtext-lg"
+                id="contactMessage"
+                name="message"
+                [autoResize]="true"
+                formControlName="message"
+                minlength="{{minMessageLength}}"
+                maxlength="{{maxMessageLength}}"
+                (change)="handleContactFormErrors()"
+                ></textarea>
+              <label for="contactMessage">* Message</label>
+            </span>
+            <div class="text-sm text-500 pt-2">
+              {{contactForm.controls['message'].value?.trim()?.length ?? 0}} /
+              <span class="text-green-400">{{maxMessageLength}}</span>
             </div>
           </div>
-        </form>
-      </div>
+          <div
+            class="flex justify-content-start flex-wrap gap-2 col-12 pt-2 z-1"
+          >
+
+            <p-message
+              *ngIf="(
+                contactForm.errors?.['name']?.required &&
+                contactForm.controls['name'].touched &&
+                contactForm.controls['name'].dirty
+              )"
+              severity="error"
+              text="Name is required"
+              styleClass="bg-card"
+            ></p-message>
+
+            <p-message
+              *ngIf="(
+                contactForm.errors?.['email']?.required &&
+                contactForm.controls['email'].touched &&
+                contactForm.controls['email'].dirty
+              )"
+              severity="error"
+              text="Email is required"
+              styleClass="bg-card"
+            ></p-message>
+
+            <p-message
+              *ngIf="(
+                contactForm.errors?.['email']?.email &&
+                contactForm.controls['email'].touched &&
+                contactForm.controls['email'].dirty
+              )"
+              severity="error"
+              text="Email is invalid"
+              styleClass="bg-card"
+            ></p-message>
+
+            <p-message
+              *ngIf="(
+                contactForm.errors?.['message']?.required &&
+                contactForm.controls['message'].touched &&
+                contactForm.controls['message'].dirty
+              )"
+              severity="error"
+              text="Message is required"
+              styleClass="bg-card"
+            ></p-message>
+
+            <p-message
+              *ngIf="(
+                contactForm.errors?.['message']?.minlength &&
+                contactForm.controls['message'].touched &&
+                contactForm.controls['message'].dirty
+              )"
+              severity="error"
+              text="Min message length is {{minMessageLength}}"
+              styleClass="bg-card"
+            ></p-message>
+
+          </div>
+          <div class="flex justify-content-center align-items-center col-12 pt-4">
+            <p-toast position="bottom-center"></p-toast>
+            <p-button
+              styleClass="p-button-lg p-button-outlined p-button-success"
+              [attr.pRipple]="contactForm.valid"
+              [loading]="isLoading"
+              [disabled]="!contactForm.valid"
+              label="Submit"
+              icon="pi pi-upload"
+              iconPos="right"
+              (click)="handleContactFormSubmit()"
+              [pTooltip]="!contactForm.valid ? 'Fill all required fields': ''"
+              tooltipPosition="top"
+            >
+              <span></span>
+            </p-button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 

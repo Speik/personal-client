@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { CarouselModule } from 'primeng/carousel';
+import { TimelineModule } from 'primeng/timeline';
 import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { ChipModule } from 'primeng/chip';
@@ -26,9 +26,11 @@ import { DecorationGridComponent } from './components/decorations/decoration-gri
 import { DecorationCircleComponent } from './components/decorations/decoration-circle/decoration-circle.component';
 import { BlockSeparatorComponent } from './components/decorations/block-separator/block-separator.component';
 
+import { DateParserService } from './utils/date-parser.service';
+
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { MainPageComponent } from './pages/main/main-page.component';
-import { ExperienceComponent } from './components/experience/experience.component';
+import { JourneyComponent } from './components/journey/journey.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SkillsComponent } from './components/skills/skills.component';
@@ -42,7 +44,7 @@ import { FooterComponent } from './components/footer/footer.component';
     DecorationGridComponent,
     DecorationCircleComponent,
     WelcomeScreenComponent,
-    ExperienceComponent,
+    JourneyComponent,
     BlockSeparatorComponent,
     PageTitleComponent,
     NavigationComponent,
@@ -57,7 +59,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ReactiveFormsModule,
     AppRoutingModule,
     ButtonModule,
-    CarouselModule,
+    TimelineModule,
     RippleModule,
     TooltipModule,
     DialogModule,
@@ -71,7 +73,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MessageModule,
     MessagesModule,
   ],
-  providers: [],
+  providers: [DateParserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

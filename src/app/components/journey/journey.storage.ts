@@ -1,11 +1,12 @@
-import { IExperience } from './experience.model';
+import { IJourney } from './journey.model';
 
-export const experience: IExperience[] = [
+export const journey: IJourney[] = [
   {
     jobTitle: 'Junior Fullstack',
     employerName: 'SK AL-SOFT',
     employedAt: new Date('2019-02-01'),
     leaveAt: new Date('2020-10-01'),
+    shortDescription: 'ERP for metrological services automation',
     description: `
       Development of ERP that provides automation of metrological services and accounting of equipment using ASP .NET.
 
@@ -33,6 +34,7 @@ export const experience: IExperience[] = [
     employerName: 'Lingualeo',
     employedAt: new Date('2020-11-01'),
     leaveAt: new Date('2021-03-01'),
+    shortDescription: 'CMS for language learning platform',
     description: `
       Content-management system of language learning platform development. There was a lot of frontend and less backend.
       I was working directly with other employees from content team with various tasks such as, for instance, email newsletters editor or courses constructor.
@@ -56,8 +58,11 @@ export const experience: IExperience[] = [
     employerName: 'StormWall',
     employedAt: new Date('2021-07-01'),
     leaveAt: new Date('2021-07-01'),
+    shortDescription: 'DDOS protection services',
     description: `
-      Anti-DDOS service microservices development and support. I was working there not for a long time because working conditions was uncomfortable
+      DDOS protection microservices development and support.
+
+      I've Implemented CLI app that keeps up to date with GitLab 80+ Docker Swarm configs using GraphQL API
     `,
     skills: [
       'Node.js',
@@ -75,8 +80,9 @@ export const experience: IExperience[] = [
     employerName: 'Noveo',
     employedAt: new Date('2021-10-01'),
     leaveAt: new Date('2022-12-01'),
+    shortDescription: 'Outsource development',
     description: `
-      Outsource development for customers from Europe with direct communication.
+      Outsource development for customers from Europe.
 
       - Development of specific chat widget for French telephony. It was hard project since we had only a month to finish. And we did it :) We were using Typescript, NestJS, TypeORM, Socket.io, Redis, MySQL
       

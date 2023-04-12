@@ -1,11 +1,11 @@
 <div
-  id="experience"
+  id="journey"
   class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-default"
 >
 
   <app-page-title
-    label="My Jobs"
-    tooltip="{{getTitleTooltip()}}"
+    label="My Journey"
+    tooltip="Currently I have {{getTotalJourneyDuration()}} of working experience"
     position="center"
   ></app-page-title>
 
@@ -30,48 +30,66 @@
   >
   </app-decoration-grid>
 
-  <div class="mt-6 text-white improved-carousel no-carousel-dots carousel-gap carousel-elevate-tail">
-    <p-carousel [value]="experienceService.experience" [numVisible]="3" [numScroll]="1">
-      <ng-template let-experience pTemplate="item">
-          <div class="ml-8 select-none">
+  <div class="mt-8 w-10 mx-auto">
+    <p-timeline [value]="journeyService.journey" align="alternate" styleClass="journey-timeline">
+      
+      <ng-template pTemplate="marker">
+        <div
+          class="flex justify-content-center align-items-center w-1rem h-1rem p-4 text-green-400"
+        >
+          <i class="pi pi-clock text-2xl"></i>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="opposite" let-journey>
+        <div
+          class="text-300 line-height-1 font-title text-xl"
+          [ngStyle]="{ paddingTop: '.85rem' }"
+        >
+          {{getJourneyDuration(journey)}}
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="content" let-journey>
+        <div class="pb-8">
+          <div appMouseParallax [parallaxIntensivity]="8">
             <div
-              pRipple
-              pTooltip="Click for details" tooltipPosition="right"
-              class="square text-shadow font-default parallelogram cursor-pointer shadow-7 hover-increase transition-duration-300 transition-ease-in-out border-3 border-green-400 border-top-none border-x-none bg-card"
-              (click)="showExperienceDetails(experience)"
+              class="font-default shadow-7 border-bottom-3 border-green-400 bg-card p-4 select-none"
             >
-              <div class="flex flex-column justify-content-between square-content p-4">
-                <div class="flex-initial font-title font-bold text-3xl text-green-400">
-                  {{ experience.employerName }}
-                </div>
-                <div class="flex-auto flex align-items-center">
-                  <div class="font-title pl-2 text-xl border-2 border-green-400 border-y-none border-right-none line-height-3">
-                    {{ experience.jobTitle }}
-                  </div>
-                </div>
-                <div class="flex-initial">
-                  <div class="text-lg text-green-400">
-                    {{ experience.employedAt | date: 'MMM y' }} -
-                    {{ experience.leaveAt | date: 'MMM y' }}
-                  </div>
-                  <div class="text-center pt-1">
-                    <small>
-                      <i class="pi pi-clock"></i>
-                      {{getDisplayExperience(experience)}}
-                    </small>
-                  </div>
-                </div>
+              <h2 class="font-title font-bold text-3xl text-green-400 p-0">
+                {{ journey.employerName }}
+              </h2>
+              <div class="text-xl text-300">
+                {{ journey.jobTitle }}
+              </div>
+              <div class="text-xl text-green-400 pt-4">
+                {{ journey.employedAt | date: 'MMM y' }} -
+                {{ journey.leaveAt | date: 'MMM y' }}
+              </div>
+              <p class="pb-0 text-xl text-white">
+                {{journey.shortDescription}}
+              </p>
+              <div class="pt-4">
+                <p-button
+                  styleClass="p-button-success p-button-outlined pulse details-button"
+                  icon="pi pi-eye"
+                  label="Show Details"
+                  (click)="handleLearnMoreClick($event, journey)"
+                >
+                </p-button>
               </div>
             </div>
           </div>
+        </div>
       </ng-template>
-    </p-carousel>
+
+    </p-timeline>
   </div>
 
   <p-dialog
     header="Header"
     styleClass="fullscreen-dialog"
-    [(visible)]="experienceModalDetails.isVisible"
+    [(visible)]="journeyModalDetails.isVisible"
     [modal]="true"
     [draggable]="false"
     [resizable]="false"
@@ -80,10 +98,10 @@
     <ng-template pTemplate="header" class="relative">
       <h2 class="relative pl-4 border-green-400 border-left-3" [ngStyle]="{ zIndex: 2205 }">
         <div class="text-5xl text-green-400 font-bold font-title mr-2">
-          {{experienceModalDetails.data?.jobTitle}}
+          {{journeyModalDetails.data?.jobTitle}}
         </div>
         <div class="text-2xl text-400 font-bold font-title">
-          {{experienceModalDetails.data?.employerName}}
+          {{journeyModalDetails.data?.employerName}}
         </div>
       </h2>
 
@@ -105,9 +123,10 @@
     <div class="grid relative" [ngStyle]="{ zIndex: 2205 }">
       <div class="col-6">
         <p
-          class="text-xl text-white font-default"
-          [innerHTML]="formatDescription(experienceModalDetails.data?.description)"
+          class="text-xl text-white font-default mb-5 pl-4 border-green-400 border-left-3"
+          *ngFor="let descriptionSegment of getDescriptionSegments(journeyModalDetails.data?.description)"
         >
+          {{descriptionSegment}}
         </p>
       </div>
       <div class="col-2"></div>
@@ -122,13 +141,13 @@
             </div>
             <div class="pl-3">
               <div>
-                {{experienceModalDetails.data?.employedAt | date: 'MMM, y'}}
+                {{journeyModalDetails.data?.employedAt | date: 'MMM, y'}}
               </div>
               <div>
-                {{experienceModalDetails.data?.leaveAt | date: 'MMM, y'}}
+                {{journeyModalDetails.data?.leaveAt | date: 'MMM, y'}}
               </div>
               <div class="pt-3">
-                {{getDisplayExperience(experienceModalDetails.data)}}
+                {{getJourneyDuration(journeyModalDetails.data)}}
               </div>
             </div>
           </div>
@@ -136,7 +155,7 @@
 
         <div class="pt-8">
           <div
-            *ngFor="let skill of experienceModalDetails.data?.skills"
+            *ngFor="let skill of journeyModalDetails.data?.skills"
             class="inline-block mr-3 mb-3"
           >
           <p-chip
