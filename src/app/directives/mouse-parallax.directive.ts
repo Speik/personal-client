@@ -3,10 +3,10 @@ import {
   Directive,
   ElementRef,
   HostListener,
-  Renderer2,
+  Input,
 } from '@angular/core';
 
-const PARALLAX_INTENSIVITY = 20;
+const DEFAULT_PARALLAX_INTENSIVITY = 20;
 const ANIMATION_DURATION_MS = 300;
 
 type Coordinates = {
@@ -23,10 +23,12 @@ type ElementParallaxRotation = {
   selector: '[appMouseParallax]',
 })
 export class MouseParallaxDirective implements AfterViewInit {
+  @Input() parallaxIntensivity = DEFAULT_PARALLAX_INTENSIVITY;
+
   content: ElementRef | undefined;
   container: ElementRef;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
+  constructor(private el: ElementRef) {
     this.container = el;
   }
 
@@ -109,8 +111,8 @@ export class MouseParallaxDirective implements AfterViewInit {
     const percentY = -(mouseYPos - centerY) / (container.offsetHeight / 2);
 
     return {
-      rotationX: Number((percentX * PARALLAX_INTENSIVITY).toFixed(4)),
-      rotationY: Number((percentY * PARALLAX_INTENSIVITY).toFixed(4)),
+      rotationX: Number((percentX * this.parallaxIntensivity).toFixed(4)),
+      rotationY: Number((percentY * this.parallaxIntensivity).toFixed(4)),
     };
   }
 }

@@ -4,7 +4,7 @@ import { Component, HostListener, Inject, ElementRef } from '@angular/core';
 const PERSONAL_EMAIL = 'speik0102@gmail.com';
 const NAVBAR_HEIGHT_BIAS = 0.75;
 
-type NavlinkTargetId = 'skills' | 'experience' | 'contact';
+type NavlinkTargetId = 'skills' | 'journey' | 'contact';
 
 @Component({
   selector: 'app-navigation',

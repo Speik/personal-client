@@ -107,35 +107,6 @@ html, body {
 .h-90rem { height: 90rem !important; }
 .h-100rem { height: 100rem !important; }
 
-.improved-carousel {
-  .p-carousel-indicators { display: none !important; }
-
-  .p-carousel-items-container {
-    padding: 2.5rem 0;
-  }
-
-  .p-carousel-item-active.p-carousel-item-end {
-    translate: 0 -10%;
-  }
-
-  .p-carousel-item {
-    transition: all .5s ease;
-  }
-
-  .p-carousel-prev,
-  .p-carousel-next {
-    scale: 1.35
-  }
-
-  .p-carousel-prev {
-    margin-left: 1rem !important;
-  }
-
-  .p-carousel-next {
-    margin-right: 1rem !important;
-  }
-}
-
 .square {
   position: relative;
 
@@ -167,15 +138,13 @@ html, body {
   }
 }
 
-.bg-green-gradient {
-  background: linear-gradient(to top right, var(--green-700), var(--green-500));
-}
-
 .text-shadow {
   text-shadow: 0 0 .1rem #eee;
 }
 
 .transparent-chip.p-chip { background-color: transparent !important; }
+
+.details-button.used { animation: none; }
 
 .fullscreen-dialog.p-dialog {
   width: 100% !important;
