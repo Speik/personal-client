@@ -1,18 +1,17 @@
 <img
-  class="block absolute select-none"
+  class="block absolute select-none opacity-10"
+  src="/assets/images/decoration-grid-light.png"
+  alt="Decoration"
   (dragstart)="handleDrag()"
   [ngClass]="{
     'bottom-0': yPos === 'bottom',
     'top-0': yPos === 'top',
     'left-0': xPos === 'left',
-    'right-0': xPos === 'right',
-    'opacity-10 w-24rem h-16rem': color === 'light',
-    'w-10rem h-10rem': color === 'dark'
+    'right-0': xPos === 'right'
   }"
-  [ngStyle]="{ zIndex }"
-  src="/assets/images/{{
-    color === 'dark'
-      ? 'decoration-grid-dark.png'
-      : 'decoration-grid-light.png'
-  }}"
+  [ngStyle]="{
+    width: '22%',
+    minWidth: '16rem',
+    zIndex
+  }"
 >
