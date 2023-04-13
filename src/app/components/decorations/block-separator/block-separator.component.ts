@@ -12,7 +12,7 @@ export class BlockSeparatorComponent implements OnInit {
   @Input() targetColorName: BackgroundColorName = 'dark';
   @Input() direction: BlockSeparatorDirection = 'right';
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if (this.direction === 'left') {
       [this.sourceColorName, this.targetColorName] = [
         this.targetColorName,

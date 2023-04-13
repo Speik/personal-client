@@ -1,20 +1,19 @@
 <div
-  class="block absolute z-0 border-circle border-3 select-none"
+  class="block absolute z-0 square border-circle border-3 select-none bg-white opacity-10"
   (dragstart)="handleDrag()"
   [ngClass]="{
     'bottom-0': yPos === 'bottom',
     'top-0': yPos === 'top',
     'left-0': xPos === 'left',
     'right-0': xPos === 'right',
-    'w-20rem h-20rem': size === 'small',
-    'w-50rem h-50rem': size === 'medium',
-    'w-80rem h-80rem': size === 'large',
     'center-top-left': (yPos === 'top') && (xPos === 'left'),
     'center-top-right': (yPos === 'top') && (xPos === 'right'),
     'center-bottom-right': (yPos === 'bottom') && (xPos === 'right'),
-    'center-bottom-left': (yPos === 'bottom') && (xPos === 'left'),
-    'bg-white border-900 opacity-10': color === 'light',
-    'surface-800 opacity-30': color === 'dark'
+    'center-bottom-left': (yPos === 'bottom') && (xPos === 'left')
   }"
-  [ngStyle]="{ zIndex }"
+  [ngStyle]="{
+    width: size,
+    minWidth: '8rem',
+    zIndex
+  }"
 ></div>
