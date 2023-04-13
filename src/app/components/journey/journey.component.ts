@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { IJourney } from './journey.model';
 import { JourneyService } from './journey.service';
-import { DateParserService } from 'src/app/utils/date-parser.service';
+import { DateParser, DateParserMode } from 'src/app/utils/date-parser';
 
 const DEFAULT_JOURNEY_DESCRIPTION = '<No Description>';
 
@@ -23,7 +23,7 @@ export class JourneyComponent implements OnInit {
 
   constructor(
     public journeyService: JourneyService,
-    public dateParserService: DateParserService
+    public dateParser: DateParser
   ) {}
 
   public ngOnInit(): void {
@@ -53,9 +53,9 @@ export class JourneyComponent implements OnInit {
   }
 
   public getTotalJourneyDuration(): string {
-    return this.dateParserService.parseMonthsToDuration(
+    return this.dateParser.parseMonthsToDuration(
       this.getTotalJourneyMonths(),
-      this.dateParserService.parseMode.SHORT
+      DateParserMode.SHORT
     );
   }
 
@@ -64,9 +64,9 @@ export class JourneyComponent implements OnInit {
 
     const { employedAt, leaveAt } = journey;
 
-    return this.dateParserService.parseMonthsToDuration(
-      this.dateParserService.getMonthsBetween(employedAt, leaveAt),
-      this.dateParserService.parseMode.DEFAULT
+    return this.dateParser.parseMonthsToDuration(
+      this.dateParser.getMonthsBetween(employedAt, leaveAt),
+      DateParserMode.DEFAULT
     );
   }
 
@@ -74,10 +74,7 @@ export class JourneyComponent implements OnInit {
     return this.journeyService.journey.reduce((result, item) => {
       const { employedAt, leaveAt } = item;
 
-      const monthsCount = this.dateParserService.getMonthsBetween(
-        employedAt,
-        leaveAt
-      );
+      const monthsCount = this.dateParser.getMonthsBetween(employedAt, leaveAt);
 
       return (result += monthsCount);
     }, 0);

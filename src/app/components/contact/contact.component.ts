@@ -5,8 +5,10 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+
+import { FormUtils } from 'src/app/utils/form-utils';
 import { ICustomer } from './contact.model';
 
 const MAX_NAME_LENGTH = 48;
@@ -19,8 +21,9 @@ const MAX_MESSAGE_LENGTH = 320;
   styleUrls: ['./contact.component.scss'],
   providers: [MessageService],
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   public isLoading = false;
+  public formErrors: string[] = [];
 
   public readonly maxNameLength = MAX_NAME_LENGTH;
   public readonly maxMessageLength = MAX_MESSAGE_LENGTH;
@@ -33,17 +36,28 @@ export class ContactComponent {
       '',
       [
         Validators.required,
-        Validators.maxLength(MAX_MESSAGE_LENGTH),
         Validators.minLength(MIN_MESSAGE_LENGTH),
-        this.trimmedMessageValidator,
+        Validators.maxLength(MAX_MESSAGE_LENGTH),
+        this.validateTrimmedMessage,
       ],
     ],
   });
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private formUtils: FormUtils
   ) {}
+
+  public ngOnInit(): void {
+    Object.values(this.contactForm.controls).forEach((control) => {
+      control.valueChanges.subscribe(() => {
+        // Mark control on typing as touched immediately
+        control.markAsTouched();
+        this.formErrors = this.formUtils.exposeErrors(this.contactForm);
+      });
+    });
+  }
 
   public handleContactFormSubmit(): void {
     if (!this.contactForm.valid) {
@@ -92,7 +106,7 @@ export class ContactComponent {
     );
   }
 
-  private trimmedMessageValidator(
+  private validateTrimmedMessage(
     target: AbstractControl
   ): Nullable<ValidationErrors> {
     const actualLength = target.value?.trim()?.length ?? 0;

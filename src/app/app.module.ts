@@ -22,11 +22,12 @@ import { AppComponent } from './app.component';
 
 import { MouseParallaxDirective } from './directives/mouse-parallax.directive';
 
+import { DateParser } from './utils/date-parser';
+import { FormUtils } from './utils/form-utils';
+
 import { DecorationGridComponent } from './components/decorations/decoration-grid/decoration-grid.component';
 import { DecorationCircleComponent } from './components/decorations/decoration-circle/decoration-circle.component';
 import { BlockSeparatorComponent } from './components/decorations/block-separator/block-separator.component';
-
-import { DateParserService } from './utils/date-parser.service';
 
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { MainPageComponent } from './pages/main/main-page.component';
@@ -73,7 +74,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MessageModule,
     MessagesModule,
   ],
-  providers: [DateParserService],
+  providers: [DateParser, FormUtils],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

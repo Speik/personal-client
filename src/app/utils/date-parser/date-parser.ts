@@ -1,26 +1,10 @@
 import { Injectable } from '@angular/core';
+import { DateParserMode, DateLabels } from './declarations';
 
 const MONTHS_PER_YEAR = 12;
 
-enum DateParserMode {
-  SHORT = 'short',
-  DEFAULT = 'default',
-}
-
-enum DateLabels {
-  SHORT_YEAR = 'y',
-  SHORT_MONTH = 'mo',
-  YEAR = 'year',
-  MONTH = 'month',
-  PLURAL_YEAR = 'years',
-  PLURAL_MONTH = 'months',
-}
-
 @Injectable()
-export class DateParserService {
-  public parseMode = DateParserMode;
-  public dateLabels = DateLabels;
-
+export class DateParser {
   /**
    *
    * @param startDate Start date to count months from
@@ -36,6 +20,12 @@ export class DateParserService {
     );
   }
 
+  /**
+   *
+   * @param monthsCount Number of months to parse
+   * @param mode Determines whether method should work with short labels or not
+   * @returns Readable duration in format of '%years% %months%'
+   */
   public parseMonthsToDuration(
     monthsCount: number,
     mode: DateParserMode
@@ -55,11 +45,23 @@ export class DateParserService {
     return `${displayYears} ${displayMonths}`;
   }
 
+  /**
+   *
+   * @param mode Determines whether method should work with short labels or not
+   * @param isPlural Determines whether labels should be plural or not
+   * @returns Duration part label
+   */
   private getYearLabel(mode: DateParserMode, isPlural: boolean): string {
     if (mode === DateParserMode.SHORT) return DateLabels.SHORT_YEAR;
     return ` ${isPlural ? DateLabels.PLURAL_YEAR : DateLabels.YEAR}`;
   }
 
+  /**
+   *
+   * @param mode Determines whether method should work with short labels or not
+   * @param isPlural Determines whether labels should be plural or not
+   * @returns Duration part label
+   */
   private getMonthLabel(mode: DateParserMode, isPlural: boolean): string {
     if (mode === DateParserMode.SHORT) return DateLabels.SHORT_MONTH;
     return ` ${isPlural ? DateLabels.PLURAL_MONTH : DateLabels.MONTH}`;
