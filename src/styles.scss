@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @mixin font-title { font-family: 'Orbitron', sans-serif; }
 @mixin font-default { font-family: 'Exo', sans-serif; }
 @mixin bg-card {
