@@ -23,21 +23,21 @@ type ElementParallaxRotation = {
   selector: '[appMouseParallax]',
 })
 export class MouseParallaxDirective implements AfterViewInit {
-  @Input() parallaxIntensivity = DEFAULT_PARALLAX_INTENSIVITY;
+  @Input() public parallaxIntensivity = DEFAULT_PARALLAX_INTENSIVITY;
 
-  content: ElementRef | undefined;
-  container: ElementRef;
+  private content: ElementRef | undefined;
+  private container: ElementRef;
 
   constructor(private el: ElementRef) {
     this.container = el;
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this.content = this.getTargetContent(this.container);
   }
 
   @HostListener('mousemove', ['$event'])
-  onMouseMove(mouseEvent: MouseEvent) {
+  public onMouseMove(mouseEvent: MouseEvent) {
     if (!this.content) return;
 
     const { rotationX, rotationY } = this.getRotation(mouseEvent);
@@ -54,7 +54,7 @@ export class MouseParallaxDirective implements AfterViewInit {
   }
 
   @HostListener('mouseenter')
-  onMouseEnter() {
+  public onMouseEnter() {
     if (!this.content) return;
 
     Object.assign(this.content.nativeElement.style, {
@@ -65,7 +65,7 @@ export class MouseParallaxDirective implements AfterViewInit {
   }
 
   @HostListener('mouseleave')
-  onMouseLeave() {
+  public onMouseLeave() {
     if (!this.content) return;
 
     this.content.nativeElement.style.transform =
