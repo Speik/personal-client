@@ -43,7 +43,6 @@
                 type="text"
                 formControlName="name"
                 maxlength="{{maxNameLength}}"
-                (change)="handleContactFormErrors()"
               />
               <label htmlFor="contactName">* Name</label>
             </span>
@@ -57,7 +56,6 @@
                 name="email"
                 type="email"
                 formControlName="email"
-                (change)="handleContactFormErrors()"
               />
               <label htmlFor="contactEmail">* Email</label>
             </span>
@@ -73,7 +71,6 @@
                 formControlName="message"
                 minlength="{{minMessageLength}}"
                 maxlength="{{maxMessageLength}}"
-                (change)="handleContactFormErrors()"
                 ></textarea>
               <label for="contactMessage">* Message</label>
             </span>

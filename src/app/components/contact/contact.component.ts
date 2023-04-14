@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 import { FormUtils } from 'src/app/utils/form-utils';
-import { ICustomer } from './contact.model';
+import { ICustomerMessage } from './contact.model';
 
 const MAX_NAME_LENGTH = 48;
 const MIN_MESSAGE_LENGTH = 16;
@@ -64,7 +64,7 @@ export class ContactComponent implements OnInit {
       return;
     }
 
-    const customerData = this.exposeCustomerData();
+    const customerData = this.exposeCustomerMessageData();
     this.isLoading = true;
 
     setTimeout(() => {
@@ -80,24 +80,12 @@ export class ContactComponent implements OnInit {
     }, 1000);
   }
 
-  public handleContactFormErrors(): void {
+  private exposeCustomerMessageData(): ICustomerMessage {
     const form = this.contactForm;
 
-    const errors = Object.entries(form.controls).reduce<ValidationErrors>(
-      (result, [key, { errors }]) => {
-        return { ...result, [key]: errors };
-      },
-      {}
-    );
-
-    const isFormValid = Object.values(errors).every((item) => item === null);
-    form.setErrors(isFormValid ? null : errors);
-  }
-
-  private exposeCustomerData(): ICustomer {
-    const form = this.contactForm;
-
-    return <ICustomer>Object.entries(form.controls).reduce<Partial<ICustomer>>(
+    return <ICustomerMessage>Object.entries(form.controls).reduce<
+      Partial<ICustomerMessage>
+    >(
       (data, [key, control]) => ({
         ...data,
         [key]: control.value?.trim() ?? '',
