@@ -1,22 +1,34 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject, ElementRef } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 
 const PERSONAL_EMAIL = 'speik0102@gmail.com';
 const NAVBAR_HEIGHT_BIAS = 0.75;
 
-type NavlinkTargetId = 'skills' | 'journey' | 'contact' | 'certificates';
+type NavlinkData = {
+  icon: Nullable<string>;
+  label: Nullable<string>;
+  reference: Nullable<string>;
+};
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent {
-  isPageScrolled = false;
-  isSidebarVisible = false;
+export class NavigationComponent implements AfterViewInit {
+  public isPageScrolled = false;
+  public isSidebarVisible = false;
 
-  pageScrolledPercents = 0;
-  email: string = PERSONAL_EMAIL;
+  public pageScrolledPercents = 0;
+  public email: string = PERSONAL_EMAIL;
+
+  public navlinks: NavlinkData[] = [];
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -24,28 +36,31 @@ export class NavigationComponent {
   ) {}
 
   @HostListener('window:scroll', [])
-  onWindowScroll(): void {
+  public onWindowScroll(): void {
     this.isPageScrolled = window.scrollY > 100;
     this.pageScrolledPercents = this.getPageScrolledPercents();
   }
 
-  getPageScrolledPercents(): number {
-    const documentHeight = this.document.body.scrollHeight - window.innerHeight;
-    const scrolledPercents = window.scrollY / (documentHeight / 100);
-
-    if (window.scrollY <= 0) {
-      return 0;
-    }
-
-    return Number(scrolledPercents.toFixed(2));
+  public ngAfterViewInit(): void {
+    this.document.querySelectorAll('.page__title').forEach((title) =>
+      this.navlinks.push({
+        icon: title.getAttribute('icon'),
+        reference: title.getAttribute('reference'),
+        label: title.getAttribute('label'),
+      })
+    );
   }
 
-  showSidebar(): void {
+  public showSidebar(): void {
     this.isSidebarVisible = true;
   }
 
-  handleNavlink(targetId: NavlinkTargetId): void {
-    const targetElement = this.document.getElementById(targetId)!;
+  public onNavlinkClick(targetId: Nullable<string>): void {
+    if (!targetId) return;
+
+    const targetElement = this.document.getElementById(targetId);
+    if (!targetElement) return;
+
     const navbarElement = (<HTMLElement>this.el.nativeElement).querySelector(
       'nav'
     )! as HTMLElement;
@@ -59,5 +74,16 @@ export class NavigationComponent {
     });
 
     this.isSidebarVisible = false;
+  }
+
+  private getPageScrolledPercents(): number {
+    const documentHeight = this.document.body.scrollHeight - window.innerHeight;
+    const scrolledPercents = window.scrollY / (documentHeight / 100);
+
+    if (window.scrollY <= 0) {
+      return 0;
+    }
+
+    return Number(scrolledPercents.toFixed(2));
   }
 }
