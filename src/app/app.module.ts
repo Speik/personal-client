@@ -15,7 +15,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
 import { SidebarModule } from 'primeng/sidebar';
 import { MessageModule } from 'primeng/message';
-import { MessagesModule } from 'primeng/messages';
+import { ImageModule } from 'primeng/image';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { SkillsComponent } from './components/skills/skills.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CertificatesComponent } from './components/certificates/certificates.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MouseParallaxDirective,
     ContactComponent,
     FooterComponent,
+    CertificatesComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ToastModule,
     SidebarModule,
     MessageModule,
-    MessagesModule,
+    ImageModule,
   ],
   providers: [DateParser, FormUtils],
   bootstrap: [AppComponent],

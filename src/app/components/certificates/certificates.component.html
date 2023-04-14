@@ -1,0 +1,74 @@
+<div
+  id="certificates"
+  class="relative overflow-hidden max-w-screen py-8 m-0 bg-dark"
+>
+  <app-page-title
+    label="My Certificates"
+    position="center"
+    tooltip="Currently I have {{getCertificatesCount()}} certificates"
+  ></app-page-title>
+
+  <app-decoration-circle
+    [size]="'large'"
+    [xPos]="'left'"
+    [yPos]="'top'"
+  ></app-decoration-circle>
+
+  <app-decoration-grid
+    [xPos]="'right'"
+    [yPos]="'top'"
+  >
+  </app-decoration-grid>
+
+  <app-decoration-grid
+    [xPos]="'right'"
+    [yPos]="'bottom'"
+  >
+  </app-decoration-grid>
+
+  <div
+    id="certificates__container"
+    class="relative z-1 flex flex-nowrap justify-content-start align-items-center overflow-x-auto overflow-y-hidden mt-8 px-8 py-4"
+  >
+    <div
+      appMouseParallax
+      [parallaxIntensivity]="7"
+      class="relative {{index > 0 && 'ml-8'}}"
+      *ngFor="let certificate of certificatesService.certificates; let index = index;"
+      [ngStyle]="{
+        paddingTop: '25%',
+        minWidth: '40%'
+      }"
+    >
+      <div class="absolute left-0 top-0 w-full h-full bg-card shadow-6 select-none cursor-pointer">
+        <div class="certificate relative flex flex-column justify-content-start p-4 text-center h-full">
+            <h2 class="font-title text-4xl text-green-400 flex-initial">
+              {{ certificate.name }}
+            </h2>
+            <div class="font-title text-2xl pt-2 text-400 flex-initial">
+              {{ certificate.issuerName }}
+            </div>
+            <div class="text-green-400 flex-auto flex justify-content-center align-items-center">
+              <i class="pi pi-verified text-7xl"></i>
+            </div>
+            <div class="font-title text-xl text-600 flex-initial">
+              {{ certificate.year }}
+            </div>
+
+            <a
+              class="certificate-preview-link"
+              href="{{certificate.credentialUrl}}"
+              target="_blank"
+            >
+              <div
+                class="w-full h-full certificate-preview-image"
+                style="background-image: url({{certificate.imageUrl}})"
+              >
+              </div>
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
