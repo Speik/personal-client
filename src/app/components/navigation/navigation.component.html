@@ -44,7 +44,9 @@
 >
 
   <ng-template pTemplate="header">
-    <h2 class="relative pl-3 font-title font-bold text-xl">Kirill Kesarev</h2>
+    <h2 class="relative pl-3 font-title font-bold text-2xl">
+      Kirill Kesarev
+    </h2>
   </ng-template>
 
   <ng-template pTemplate="content" styleClass="pt-4">
@@ -60,8 +62,8 @@
             styleClass="p-button-success p-button-text"
             (onClick)="onNavlinkClick(navlink.reference)"
           >
-            <i class="pi pi-{{navlink.icon}} text-2xl"></i>
-            <span class="text-2xl font-title font-bold pl-3 text-white">
+            <i class="pi pi-{{navlink.icon}} text-xl"></i>
+            <span class="text-xl font-title font-bold pl-3 text-white">
               {{navlink.label}}
             </span>
           </p-button>
