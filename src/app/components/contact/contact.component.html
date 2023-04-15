@@ -1,6 +1,6 @@
 <div
   id="contact"
-  class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-default"
+  class="relative overflow-hidden min-h-screen max-w-screen p-16 bg-default"
 >
   <app-page-title
     label="Contact Me"
@@ -26,15 +26,16 @@
   >
   </app-decoration-grid>
 
-  <div class="relative w-8 mx-auto z-1">
-    <div class="text-white text-4xl text-center pt-4">
+  <div class="relative w-3/4 mx-auto z-[1]">
+    <div class="text-white text-3xl text-center pt-4">
       Have a question? Feel free to ask!
     </div>
 
-    <div class="flex justify-center items-center pt-8">
-      <form [formGroup]="contactForm">
-        <div class="grid">
-          <div class="col-6">
+    <div class="flex justify-center items-center pt-16">
+      <form class="w-full" [formGroup]="contactForm">
+        <div class="grid grid-cols-2 gap-7 w-full">
+
+          <div>
             <span class="p-float-label w-full">
               <input
                 pInputText
@@ -48,7 +49,8 @@
               <label htmlFor="contactName">* Name</label>
             </span>
           </div>
-          <div class="col-6">
+
+          <div>
             <span class="p-float-label w-full">
               <input
                 pInputText
@@ -61,7 +63,8 @@
               <label htmlFor="contactEmail">* Email</label>
             </span>
           </div>
-          <div class="col-12 pt-4">
+
+          <div class="col-span-2">
             <span class="p-float-label w-full">
               <textarea
                 pInputTextarea
@@ -75,13 +78,15 @@
                 ></textarea>
               <label for="contactMessage">* Message</label>
             </span>
-            <div class="text-sm text-500 pt-2">
+            <div class="text-sm text-neutral-400">
               {{contactForm.controls['message'].value?.trim()?.length ?? 0}} /
               <span class="text-green-400">{{maxMessageLength}}</span>
             </div>
           </div>
+
           <div
-            class="flex justify-start flex-wrap gap-2 col-12 pt-2 z-1"
+            class="col-span-2 flex justify-start flex-wrap gap-4"
+            *ngIf="formErrors.length > 0"
           >
             <p-message
               *ngFor="let errorMessage of formErrors"
@@ -90,7 +95,8 @@
               styleClass="bg-card shadow-3"
             ></p-message>
           </div>
-          <div class="flex justify-center items-center col-12 pt-4 z-1">
+
+          <div class="col-span-2 flex justify-center items-center">
             <p-toast position="bottom-center"></p-toast>
             <p-button
               styleClass="p-button-lg p-button-outlined p-button-success {{contactForm.valid && 'pulse'}}"
@@ -106,6 +112,7 @@
             >
             </p-button>
           </div>
+
         </div>
       </form>
     </div>
