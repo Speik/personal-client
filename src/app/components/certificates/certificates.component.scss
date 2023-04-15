@@ -13,12 +13,6 @@
       -webkit-filter: blur(8px);
       filter: blur(8px);
       transition: .3s ease-out;
-
-      .certificate-preview-image {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-      }
     }
 
     &:hover, &:focus {
@@ -31,6 +25,6 @@
   }
 
   &::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 }

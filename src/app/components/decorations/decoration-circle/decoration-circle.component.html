@@ -1,15 +1,11 @@
 <div
-  class="block absolute z-0 square border-circle border-3 select-none bg-white opacity-10"
+  class="block absolute z-0 square rounded-full select-none bg-neutral-700 opacity-40 {{yPos}}-0 {{xPos}}-0"
   (dragstart)="handleDrag()"
   [ngClass]="{
-    'bottom-0': yPos === 'bottom',
-    'top-0': yPos === 'top',
-    'left-0': xPos === 'left',
-    'right-0': xPos === 'right',
-    'center-top-left': (yPos === 'top') && (xPos === 'left'),
-    'center-top-right': (yPos === 'top') && (xPos === 'right'),
-    'center-bottom-right': (yPos === 'bottom') && (xPos === 'right'),
-    'center-bottom-left': (yPos === 'bottom') && (xPos === 'left')
+    '-translate-x-1/2': xPos === 'left',
+    'translate-x-1/2': xPos === 'right',
+    '-translate-y-1/2': yPos === 'top',
+    'translate-y-1/2': yPos === 'bottom'
   }"
   [ngStyle]="{
     width: size,

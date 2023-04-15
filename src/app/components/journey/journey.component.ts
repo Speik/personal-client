@@ -30,7 +30,7 @@ export class JourneyComponent implements OnInit {
     this.journeyService.getAll().subscribe();
   }
 
-  public handleLearnMoreClick(event: MouseEvent, journey: IJourney): void {
+  public onLearnMoreClick(event: MouseEvent, journey: IJourney): void {
     const button = <Nullable<HTMLElement>>event.target;
 
     this.journeyModalDetails.data = journey;

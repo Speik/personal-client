@@ -32,7 +32,6 @@ const SOCIAL_LINKS: SocialLink[] = [
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
   socialLinks: SocialLink[] = SOCIAL_LINKS;

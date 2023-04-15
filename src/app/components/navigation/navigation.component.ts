@@ -37,7 +37,7 @@ export class NavigationComponent implements AfterViewInit {
 
   @HostListener('window:scroll', [])
   public onWindowScroll(): void {
-    this.isPageScrolled = window.scrollY > 100;
+    this.isPageScrolled = window.scrollY > 0;
     this.pageScrolledPercents = this.getPageScrolledPercents();
   }
 

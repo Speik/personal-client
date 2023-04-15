@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @mixin font-title { font-family: 'Orbitron', sans-serif; }
 @mixin font-default { font-family: 'Exo', sans-serif; }
 @mixin bg-card {
@@ -69,41 +73,12 @@ html, body {
 .pulse { animation: pulse 2s infinite; }
 .pause-animation { animation-play-state: paused; }
 
-.hover-increase { &:hover { scale: 110%; } }
-.hover-decrease { &:hover { scale: 90%; } }
-
 .font-title { @include font-title; }
 .font-default { @include font-default; }
 
 .bg-default { background-color: var(--bg-default) !important; }
 .bg-dark { background-color: var(--bg-dark) !important; }
 .bg-card { @include bg-card; }
-
-.cursor-default { cursor: default !important; }
-
-.list-style-inside { list-style-position: inside !important; }
-.list-style-outside { list-style-position: outside !important; }
-
-.center-top-left { transform: translate(-50%, -50%) !important; }
-.center-top-right { transform: translate(50%, -50%) !important; }
-.center-bottom-right { transform: translate(50%, 50%) !important; }
-.center-bottom-left { transform: translate(-50%, 50%) !important; }
-
-.w-40rem { width: 40rem !important; }
-.w-50rem { width: 50rem !important; }
-.w-60rem { width: 60rem !important; }
-.w-70rem { width: 70rem !important; }
-.w-80rem { width: 80rem !important; }
-.w-90rem { width: 90rem !important; }
-.w-100rem { width: 100rem !important; }
-
-.h-40rem { height: 40rem !important; }
-.h-50rem { height: 50rem !important; }
-.h-60rem { height: 60rem !important; }
-.h-70rem { height: 70rem !important; }
-.h-80rem { height: 80rem !important; }
-.h-90rem { height: 90rem !important; }
-.h-100rem { height: 100rem !important; }
 
 .square {
   position: relative;
@@ -164,10 +139,7 @@ html, body {
   }
 }
 
-.improved-progressbar.p-progressbar {
-  height: .35rem;
-  border-radius: 0;
-  
+.skill-progressbar.p-progressbar {
   .p-progressbar-value {
     background: var(--green-400);
   }

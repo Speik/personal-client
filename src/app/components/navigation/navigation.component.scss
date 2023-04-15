@@ -1,13 +1,5 @@
-nav { 
-  background-color: transparent;
-  z-index: 100;
-  padding: 1rem 0;
-  transition: .3s ease;
-
+nav {
   .mail-container {
-    transition: .3s ease;
-    overflow: hidden;
-
     &::before {
       content: '';
       display: block;
@@ -23,10 +15,7 @@ nav {
   }
 
   &.in-motion {
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    padding: 1.5rem 0 2rem 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3) !important;
 
     .mail-container {
       &::before {
@@ -34,15 +23,5 @@ nav {
         transition-delay: .1s;
       }
     }
-  }
-
-  .scroll-indicator {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 0;
-    width: 4px;
-    background-color: var(--green-400);
-    transition: height .5s ease-out;
   }
 }
