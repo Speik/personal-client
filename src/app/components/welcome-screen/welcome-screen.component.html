@@ -1,63 +1,6 @@
 <div
-  class="relative overflow-hidden flex items-end min-h-screen max-w-screen px-8 m-0 text-white bg-default flex-wrap"
+  class="relative flex justify-center items-center overflow-hidden min-h-screen max-w-screen px-8 text-white bg-default"
 >
-  <div class="grid flex-auto pt-4">
-    
-    <div class="col-7">
-      <div class="font-title">
-        <div class="text-2xl text-green-400">
-          Hi, my name is
-        </div>
-        <h1 class="text-7xl font-bold pt-4">
-          Kirill Kesarev<span class="text-green-500 xl">.</span>
-        </h1>
-        <div class="text-6xl text-300">
-          I<span class="text-green-500 xl">'</span>m
-          Node<span class="text-green-500 xl">.</span>js
-          Developer
-        </div>
-        <div class="font-default text-200 grid pt-6">
-          <div class="col-7 py-0 text-lg" style="letter-spacing: .05rem;">
-            Self-educated since 2017 year. Experienced
-            in FullStack development too, but one who's really love challenges
-            that brings Backend Node.js applications
-          </div>
-          <div class="col-5 py-0"></div>
-        </div>
-        <div class="relative mt-4 inline-block overflow-hidden">
-          <p-button
-            pRipple
-            styleClass="p-button-lg p-button-outlined p-button-success"
-            label="Learn More"
-            icon="pi pi-search"
-            iconPos="right"
-            (click)="handleLearnMore()"
-          >
-          </p-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-5 flex justify-center items-center">
-      <img
-        class="block w-14rem h-14rem z-5 rotate"
-        src="/assets/images/node-icon.png"
-        (dragstart)="handleDrag()"
-        [ngStyle]="{
-          filter: 'drop-shadow(0 0 2rem #222)'
-        }"
-      >
-    </div>
-
-  </div>
-
-  <div
-    class="absolute bottom-0 left-50 font-title text-xs text-400 uppercase blink center-top-left transition-duration-300 transition-ease-out"
-  >
-    <div class="line-height-4">Scroll down</div>
-    <div class="text-center"><i class="pi pi-angle-down"></i></div>
-  </div>
-  
   <app-decoration-grid
     [yPos]="'bottom'"
     [xPos]="'left'"
@@ -74,4 +17,52 @@
     [xPos]="'left'"
     [yPos]="'top'"
   ></app-decoration-circle>
+
+  <div class="relative z-[1] flex flex-auto justify-center items-center">
+    
+    <div class="font-title w-1/2">
+      <div class="text-2xl text-green-400">
+        Hi, my name is
+      </div>
+      <h1 class="text-6xl font-bold pt-6">
+        Kirill Kesarev<span class="text-green-500">.</span>
+      </h1>
+      <div class="text-5xl text-300">
+        I<span class="text-green-500">'</span>m
+        Node<span class="text-green-500">.</span>js
+        Developer
+      </div>
+      <div class="pt-6 font-default text-lg tracking-wider text-neutral-200">
+        Self-educated since 2017 year. Experienced
+        in FullStack development too, but one who's really love challenges
+        that brings Backend Node.js applications
+      </div>
+      <div class="relative pt-6">
+        <p-button
+          styleClass="p-button-outlined p-button-success"
+          label="Learn More"
+          icon="pi pi-search"
+          iconPos="right"
+          (click)="handleLearnMore()"
+        >
+        </p-button>
+      </div>
+    </div>
+
+    <div class="flex w-1/2 justify-center items-center">
+      <img
+        class="w-[14rem] h-[14rem] rotate drop-shadow-2xl"
+        src="/assets/images/node-icon.png"
+        (dragstart)="handleDrag()"
+      >
+    </div>
+
+  </div>
+
+  <div
+    class="absolute bottom-0 left-50 font-title text-xs text-neutral-400 uppercase blink"
+  >
+    <div class="line-height-4">Scroll down</div>
+    <div class="text-center"><i class="pi pi-angle-down"></i></div>
+  </div>
 </div>
