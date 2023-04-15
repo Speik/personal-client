@@ -142,10 +142,7 @@ html, body {
   }
 }
 
-.improved-progressbar.p-progressbar {
-  height: .35rem;
-  border-radius: 0;
-  
+.skill-progressbar.p-progressbar {
   .p-progressbar-value {
     background: var(--green-400);
   }
