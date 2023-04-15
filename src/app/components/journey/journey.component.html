@@ -1,8 +1,7 @@
 <div
   id="journey"
-  class="relative overflow-hidden min-h-screen max-w-screen p-8 m-0 bg-default"
+  class="relative overflow-hidden min-h-screen max-w-screen p-16 bg-default"
 >
-
   <app-page-title
     label="My Journey"
     tooltip="Currently I have {{getTotalJourneyDuration()}} of working experience"
@@ -28,8 +27,8 @@
   >
   </app-decoration-grid>
 
-  <div class="mt-8 w-10 mx-auto">
-    <p-timeline [value]="journeyService.journey" align="alternate" styleClass="journey-timeline">
+  <div class="relative mt-8 mx-auto z-[1]">
+    <p-timeline [value]="journeyService.journey" align="alternate">
       
       <ng-template pTemplate="marker">
         <div
@@ -41,8 +40,7 @@
 
       <ng-template pTemplate="opposite" let-journey>
         <div
-          class="text-300 line-height-1 font-title text-xl"
-          [ngStyle]="{ paddingTop: '.85rem' }"
+          class="text-white line-height-1 font-title text-xl pt-[0.85rem]"
         >
           {{getJourneyDuration(journey)}}
         </div>
@@ -52,12 +50,12 @@
         <div class="pb-8">
           <div appMouseParallax [parallaxIntensivity]="8">
             <div
-              class="font-default shadow-7 border-bottom-3 border-green-400 bg-card p-4 select-none"
+              class="font-default shadow-2xl border-b-4 border-b-green-400 bg-card p-4 select-none"
             >
-              <h2 class="font-title font-bold text-3xl text-green-400 p-0">
+              <h2 class="font-title font-bold text-3xl text-green-400">
                 {{ journey.employerName }}
               </h2>
-              <div class="text-xl text-300">
+              <div class="text-xl text-white">
                 {{ journey.jobTitle }}
               </div>
               <div class="text-xl text-green-400 pt-4">
@@ -72,7 +70,7 @@
                   styleClass="p-button-success p-button-outlined pulse details-button"
                   icon="pi pi-eye"
                   label="Show Details"
-                  (click)="handleLearnMoreClick($event, journey)"
+                  (click)="onLearnMoreClick($event, journey)"
                 >
                 </p-button>
               </div>
@@ -94,11 +92,11 @@
   >
 
     <ng-template pTemplate="header" class="relative">
-      <h2 class="relative pl-4 border-green-400 border-left-3" [ngStyle]="{ zIndex: 2205 }">
-        <div class="text-5xl text-green-400 font-bold font-title mr-2">
+      <h2 class="relative pl-4 border-l-green-400 border-l-4" [ngStyle]="{ zIndex: 2205 }">
+        <div class="text-4xl text-green-400 font-bold font-title mr-2">
           {{journeyModalDetails.data?.jobTitle}}
         </div>
-        <div class="text-2xl text-400 font-bold font-title">
+        <div class="text-2xl text-neutral-300 font-bold font-title">
           {{journeyModalDetails.data?.employerName}}
         </div>
       </h2>
@@ -116,17 +114,16 @@
       ></app-decoration-circle>
     </ng-template>
 
-    <div class="grid relative" [ngStyle]="{ zIndex: 2205 }">
-      <div class="col-6">
+    <div class="flex justify-between relative" [ngStyle]="{ zIndex: 2205 }">
+      <div class="w-3/5 space-y-8">
         <p
-          class="text-xl text-white font-default mb-5 pl-4 border-green-400 border-left-3"
+          class="text-xl text-white font-default pl-4 border-l-green-400 border-l-4"
           *ngFor="let descriptionSegment of getDescriptionSegments(journeyModalDetails.data?.description)"
         >
           {{descriptionSegment}}
         </p>
       </div>
-      <div class="col-2"></div>
-      <div class="col-4">
+      <div class="w-2/5 pl-32">
 
         <div class="text-white text-2xl flex justify-start items-center">
           <div class="flex justify-start items-center">
@@ -156,7 +153,7 @@
           >
           <p-chip
             label="{{skill}}"
-            styleClass="select-none cursor-default text-lg transparent-chip text-green-400 font-bold border-green-400 border-1 border-round-2xl"
+            styleClass="select-none cursor-default text-lg transparent-chip text-green-400 font-bold border-green-400 border-2 rounded-full"
           ></p-chip>
           </div>
         </div>
