@@ -5,15 +5,15 @@
   [attr.label]="label"
 >
   <h2
-    class="text-6xl flex align-items-center"
+    class="text-6xl flex items-center"
     [ngClass]="{
-      'justify-content-start': position === 'left',
-      'justify-content-end': position === 'right',
-      'justify-content-center': position === 'center'
+      'justify-start': position === 'left',
+      'justify-end': position === 'right',
+      'justify-center': position === 'center'
     }"
   >
     <div
-      class="flex justify-content-center align-items-center line-height-4 border-bottom-3 border-green-400"
+      class="flex justify-center items-center line-height-4 border-bottom-3 border-green-400"
       [ngStyle]="{
         width: 'fit-content'
       }"

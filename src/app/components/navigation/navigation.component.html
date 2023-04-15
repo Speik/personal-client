@@ -1,11 +1,11 @@
 <nav
-  class="fixed left-0 top-0 w-full px-8 text-white font-title text-4xl"
+  class="fixed left-0 top-0 w-full px-8 pt-2 text-white font-title text-4xl z-[100] duration-300 ease bg-transparent"
   [ngClass]="{
-    'in-motion': isPageScrolled
+    'in-motion backdrop-blur pt-6 pb-8': isPageScrolled
   }"
 >
   <div
-    class="scroll-indicator max-h-full"
+    class="max-h-full w-[4px] left-0 top-0 absolute bg-green-400 transition-[height] duration-300 ease-out"
     [ngStyle]="{ height: pageScrolledPercents + '%'}"
     [ngClass]="{
       'hidden': !isPageScrolled
@@ -13,16 +13,16 @@
   >
   </div>
 
-  <div class="flex justify-content-between align-items-center">
+  <div class="flex justify-between items-center">
     <div
-      class="mail-container relative flex align-items-center"
+      class="mail-container relative flex items-center duration-300 ease overflow-hidden"
       [ngClass]="{
         'pl-3': isPageScrolled
       }"
     >
       <a
         href="mailto:{{email}}"
-        class="no-underline font-bold font-default text-lg text-white hover:text-green-400 transition-duration-300 transition-ease-in-out"
+        class="inline no-underline font-bold font-default text-lg text-white hover:text-green-400 duration-300 ease-in-out"
       >
         {{email}}
       </a>
@@ -39,19 +39,19 @@
 
 <p-sidebar
   [(visible)]="isSidebarVisible"
-  styleClass="w-4 bg-default text-white"
+  styleClass="w-4/12 bg-default text-white"
   position="right"
 >
 
   <ng-template pTemplate="header">
-    <h2 class="relative pl-3 font-title">Kirill Kesarev</h2>
+    <h2 class="relative pl-3 font-title font-bold text-xl">Kirill Kesarev</h2>
   </ng-template>
 
   <ng-template pTemplate="content" styleClass="pt-4">
-    <hr class="border-800 border-top-1 border-solid">
+    <hr class="border-t-gray-600 border-solid">
 
     <div class="pt-2">
-      <ul class="text-green-400 list-none">
+      <ul class="text-green-400">
         <li
           class="pt-2"
           *ngFor="let navlink of navlinks"
@@ -61,7 +61,7 @@
             (onClick)="onNavlinkClick(navlink.reference)"
           >
             <i class="pi pi-{{navlink.icon}} text-2xl"></i>
-            <span class="text-2xl font-title font-bold pl-3 text-200">
+            <span class="text-2xl font-title font-bold pl-3 text-white">
               {{navlink.label}}
             </span>
           </p-button>

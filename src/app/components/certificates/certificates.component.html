@@ -29,7 +29,7 @@
 
   <div
     id="certificates__container"
-    class="relative z-1 flex flex-nowrap justify-content-start align-items-center overflow-x-auto overflow-y-hidden mt-8 px-8 py-4"
+    class="relative z-1 flex flex-nowrap justify-start items-center overflow-x-auto overflow-y-hidden mt-8 px-8 py-4"
   >
     <div
       appMouseParallax
@@ -42,14 +42,14 @@
       }"
     >
       <div class="absolute left-0 top-0 w-full h-full bg-card shadow-6 select-none cursor-pointer">
-        <div class="certificate relative flex flex-column justify-content-start p-4 text-center h-full">
+        <div class="certificate relative flex flex-col justify-start p-4 text-center h-full">
             <h2 class="font-title text-4xl text-green-400 flex-initial">
               {{ certificate.name }}
             </h2>
             <div class="font-title text-2xl pt-2 text-400 flex-initial">
               {{ certificate.issuerName }}
             </div>
-            <div class="text-green-400 flex-auto flex justify-content-center align-items-center">
+            <div class="text-green-400 flex-auto flex justify-center items-center">
               <i class="pi pi-verified text-7xl"></i>
             </div>
             <div class="font-title text-xl text-600 flex-initial">
