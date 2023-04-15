@@ -1,6 +1,6 @@
 <div
   id="certificates"
-  class="relative overflow-hidden max-w-screen py-8 m-0 bg-dark"
+  class="relative overflow-hidden max-w-screen py-16 m-0 bg-dark"
 >
   <app-page-title
     label="My Certificates"
@@ -29,30 +29,27 @@
 
   <div
     id="certificates__container"
-    class="relative z-1 flex flex-nowrap justify-start items-center overflow-x-auto overflow-y-hidden mt-8 px-8 py-4"
+    class="relative z-[1] flex flex-nowrap justify-start items-center overflow-x-auto overflow-y-hidden mt-8 px-16 py-8 space-x-16"
   >
     <div
       appMouseParallax
       [parallaxIntensivity]="7"
-      class="relative {{index > 0 && 'ml-8'}}"
-      *ngFor="let certificate of certificatesService.certificates; let index = index;"
-      [ngStyle]="{
-        paddingTop: '25%',
-        minWidth: '40%'
-      }"
+      class="relative min-w-[40%]"
+      *ngFor="let certificate of certificatesService.certificates"
+      [ngStyle]="{ paddingTop: '25%' }"
     >
-      <div class="absolute left-0 top-0 w-full h-full bg-card shadow-6 select-none cursor-pointer">
+      <div class="absolute left-0 top-0 w-full h-full bg-card shadow-xl select-none cursor-pointer">
         <div class="certificate relative flex flex-col justify-start p-4 text-center h-full">
-            <h2 class="font-title text-4xl text-green-400 flex-initial">
+            <h2 class="font-title font-bold text-2xl text-green-400 flex-initial">
               {{ certificate.name }}
             </h2>
-            <div class="font-title text-2xl pt-2 text-400 flex-initial">
+            <div class="font-title text-2xl pt-2 text-neutral-400 flex-initial">
               {{ certificate.issuerName }}
             </div>
             <div class="text-green-400 flex-auto flex justify-center items-center">
               <i class="pi pi-verified text-7xl"></i>
             </div>
-            <div class="font-title text-xl text-600 flex-initial">
+            <div class="font-title text-xl text-neutral-500 flex-initial">
               {{ certificate.year }}
             </div>
 
@@ -62,7 +59,7 @@
               target="_blank"
             >
               <div
-                class="w-full h-full certificate-preview-image"
+                class="w-full h-full bg-cover bg-no-repeat bg-center"
                 style="background-image: url({{certificate.imageUrl}})"
               >
               </div>
