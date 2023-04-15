@@ -39,14 +39,19 @@
             <span class="p-float-label w-full">
               <input
                 pInputText
-                class="p-inputtext-lg"
+                class="p-inputtext-lg w-full font-default bg-card text-white border-neutral-800 border-2 focus:outline-none focus:shadow-none focus:border-green-400"
                 id="contactName"
                 name="name"
                 type="text"
                 formControlName="name"
                 maxlength="{{maxNameLength}}"
               />
-              <label htmlFor="contactName">* Name</label>
+              <label
+                htmlFor="contactName"
+                class="font-title text-green-400"
+              >
+                * Name
+              </label>
             </span>
           </div>
 
@@ -54,13 +59,18 @@
             <span class="p-float-label w-full">
               <input
                 pInputText
-                class="p-inputtext-lg"
+                class="p-inputtext-lg w-full font-default bg-card text-white border-neutral-800 border-2 focus:outline-none focus:shadow-none focus:border-green-400"
                 id="contactEmail"
                 name="email"
                 type="email"
                 formControlName="email"
               />
-              <label htmlFor="contactEmail">* Email</label>
+              <label
+                htmlFor="contactEmail"
+                class="font-title text-green-400"
+              >
+                * Email
+              </label>
             </span>
           </div>
 
@@ -68,7 +78,7 @@
             <span class="p-float-label w-full">
               <textarea
                 pInputTextarea
-                class="p-inputtext-lg"
+                class="p-inputtext-lg min-h-[20rem] w-full font-default bg-card text-white border-neutral-800 border-2 focus:outline-none focus:shadow-none focus:border-green-400"
                 id="contactMessage"
                 name="message"
                 [autoResize]="true"
@@ -76,7 +86,12 @@
                 minlength="{{minMessageLength}}"
                 maxlength="{{maxMessageLength}}"
                 ></textarea>
-              <label for="contactMessage">* Message</label>
+              <label
+                for="contactMessage"
+                class="font-title text-green-400"
+              >
+                * Message
+              </label>
             </span>
             <div class="text-sm text-neutral-400">
               {{contactForm.controls['message'].value?.trim()?.length ?? 0}} /
