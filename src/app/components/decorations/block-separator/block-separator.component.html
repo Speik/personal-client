@@ -1,4 +1,4 @@
-<div class="relative h-20rem z-1 select-none" [ngClass]="{
+<div class="relative h-[20rem] z-1 select-none" [ngClass]="{
   'bg-default': sourceColorName == 'default',
   'bg-dark': sourceColorName === 'dark'
 }"
@@ -14,33 +14,37 @@
       <polygon
         *ngIf="targetColorName ==='dark'"
         points="0,100 100,0 100,100"
-        style="fill: #1d1a1a;"
+        style="fill: var(--bg-dark);"
       />
   
       <polygon
         *ngIf="targetColorName ==='default'"
         points="0,100 100,0 100,100"
-        style="fill: #212121;"
+        style="fill: var(--bg-default);"
       />
   
       <polygon
         points="0,74 100,0 100,26 0,100"
-        style="fill: var(--green-600); filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
+        class="fill-green-600"
+        style="filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
       />
 
       <polygon
         points="0,50 27,32 30,44 0,65"
-        style="fill: var(--surface-300); filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
+        class="fill-gray-300"
+        style="filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
       />
 
       <polygon
         points="30,29.5 34,27 37,38.7 33,41.5"
-        style="fill: var(--surface-300); filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
+        class="fill-gray-300"
+        style="filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
       />
 
       <polygon
         points="36.5,25.5 40.5,23 43.3,34 39.5,36.5"
-        style="fill: var(--surface-300); filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
+        class="fill-gray-300"
+        style="filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
       />
     </svg>
   </div>
@@ -54,7 +58,7 @@
     >
       <polygon
         points="0,87 47,50 45,66.7 0,100"
-        style="fill: var(--surface-300);"
+        class="fill-gray-300"
       />
     </svg>
   </div>
