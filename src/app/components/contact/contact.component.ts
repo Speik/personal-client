@@ -18,7 +18,6 @@ const MAX_MESSAGE_LENGTH = 320;
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
   providers: [MessageService],
 })
 export class ContactComponent implements OnInit {

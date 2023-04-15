@@ -1,5 +1,5 @@
 <footer
-  class="relative overflow-hidden max-w-screen px-8 pb-4 pt-8 m-0 bg-dark"
+  class="relative overflow-hidden max-w-screen px-16 pb-4 pt-16 bg-dark"
 >
   <app-decoration-circle
     [size]="'small'"
@@ -13,42 +13,40 @@
   >
   </app-decoration-grid>
 
-  <div class="relative mx-auto w-8 z-1">
-    <div class="flex justify-between items-center flex-wrap">
-
-      <ul class="list-none flex justify-center items-center flex-wrap w-6">
-        <li
-          class="footer-social-link flex-initial w-6"
-          *ngFor="let link of socialLinks; let index = index;"
-          [ngClass]="{
-            'pt-2': [2, 3].includes(index)
-          }"
+  <div class="grid grid-cols-2 relative w-full z-[1]">
+    <ul class="grid grid-cols-2 gap-4 pr-4">
+      <li *ngFor="let link of socialLinks">
+        <a
+          href="{{link.url}}"
+          target="_blank"
+          class="block w-full text-neutral-400 no-underline text-xl duration-300 hover:text-green-400 ease bg-card p-4 shadow-lg hover:scale-90"
         >
-          <a
-            href="{{link.url}}"
-            target="_blank"
-            class="text-400 no-underline text-xl"
-          >
-            <i class="pi pi-{{link.iconName}} text-xl"></i>
-            <span class="pl-3">{{link.label}}</span>
-          </a>
-        </li>
-      </ul>
-  
-      <div
-        class="flex justify-center items-center border-green-400 border-left-3 w-6"
-      >
+          <i class="pi pi-{{link.iconName}} text-xl"></i>
+          <span class="pl-3">{{link.label}}</span>
+        </a>
+      </li>
+    </ul>
+
+    <div
+      class="flex flex-col justify-start items-start border-l-green-400 border-l-2 pl-4 py-4"
+    >
+      <div class="w-3/5 text-neutral-300 flex-auto">
+        Share my CV with your TechLead or Manager if you want to
+        <span class="text-green-400">hire me</span>.
+        I've prepared PDF version for you :)
+      </div>
+      <div class="pt-2 flex-initial">
         <p-button
           icon="pi pi-file"
           label="Download CV"
-          styleClass="p-button-outlined p-button-success p-button-lg"
+          styleClass="p-button-sm p-button-outlined p-button-success"
         ></p-button>
       </div>
-
-      <div class="w-full pt-6 text-600 text-lg text-center">
-        Homemade with <i class="pi pi-heart-fill text-green-700"></i> and Angular &copy; {{getCurrentYear()}}
-      </div>
-  
     </div>
+
+    <div class="col-span-2 pt-8 text-neutral-600 text-lg text-center">
+      Homemade with <i class="pi pi-heart-fill text-green-700"></i> and Angular &copy; {{getCurrentYear()}}
+    </div>
+
   </div>
 </footer>

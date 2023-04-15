@@ -73,9 +73,6 @@ html, body {
 .pulse { animation: pulse 2s infinite; }
 .pause-animation { animation-play-state: paused; }
 
-.hover-increase { &:hover { scale: 110%; } }
-.hover-decrease { &:hover { scale: 90%; } }
-
 .font-title { @include font-title; }
 .font-default { @include font-default; }
 
