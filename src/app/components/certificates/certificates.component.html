@@ -29,27 +29,26 @@
 
   <div
     id="certificates__container"
-    class="relative z-[1] flex flex-nowrap justify-start items-center overflow-x-auto overflow-y-hidden mt-8 px-16 py-8 space-x-16"
+    class="relative z-[1] flex flex-nowrap justify-start items-center overflow-x-auto overflow-y-hidden mt-8 px-16 xl:px-14 lg:px-12 md:px-10 sm:px-8 xs:px-4 py-8 space-x-16 xl:space-x-14 lg:space-x-12 md:space-x-10 sm:space-x-8 xs:space-x-4"
   >
     <div
       appMouseParallax
       [parallaxIntensivity]="7"
-      class="relative min-w-[40%]"
+      class="relative min-w-[40%] pt-[25%] lg:min-w-[50%] lg:pt-[30%] md:min-w-[75%] md:pt-[45%] sm:min-w-full sm:pt-[50%] max-w-full"
       *ngFor="let certificate of certificatesService.certificates"
-      [ngStyle]="{ paddingTop: '25%' }"
     >
       <div class="absolute left-0 top-0 w-full h-full bg-card shadow-xl select-none cursor-pointer">
         <div class="certificate relative flex flex-col justify-start p-4 text-center h-full">
-            <h2 class="font-title font-bold text-2xl text-green-400 flex-initial">
+            <h2 class="font-title font-bold text-2xl lg:text-xl text-green-400 flex-initial">
               {{ certificate.name }}
             </h2>
-            <div class="font-title text-2xl pt-2 text-neutral-400 flex-initial">
+            <div class="font-title text-2xl lg:text-xl pt-2 text-neutral-400 flex-initial">
               {{ certificate.issuerName }}
             </div>
             <div class="text-green-400 flex-auto flex justify-center items-center">
-              <i class="pi pi-verified text-7xl"></i>
+              <i class="pi pi-verified text-7xl xl:text-5xl lg:text-4xl md:text-3xl"></i>
             </div>
-            <div class="font-title text-xl text-neutral-500 flex-initial">
+            <div class="font-title text-xl lg:text-lg text-neutral-500 flex-initial">
               {{ certificate.year }}
             </div>
 

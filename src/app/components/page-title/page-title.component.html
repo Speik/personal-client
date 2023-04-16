@@ -5,7 +5,7 @@
   [attr.label]="label"
 >
   <h2
-    class="text-5xl font-bold flex items-center"
+    class="text-5xl md:text-3xl font-bold flex items-center"
     [ngClass]="{
       'justify-start': position === 'left',
       'justify-end': position === 'right',
@@ -15,16 +15,17 @@
     <div
       class="flex justify-center pb-6 items-center border-b-4 border-b-green-400 w-fit"
     >
-      <div class="pr-3">
-        <i class="pi pi-{{icon}} text-4xl text-green-400"></i>
+      <div class="pr-3 md:pr-2">
+        <i class="pi pi-{{icon}} text-4xl md:text-3xl text-green-400"></i>
       </div>
       <div>
         {{label}}
       </div>
-      <div class="pl-4" *ngIf="tooltip">
+      <div class="pl-4 sm:hidden" *ngIf="tooltip">
         <i
           class="pi pi-info-circle pulse rounded-full cursor-pointer text-4xl text-green-400"
-          pTooltip="{{tooltip}}" tooltipPosition="top"
+          pTooltip="{{tooltip}}"
+          tooltipPosition="top"
         ></i>
       </div>
     </div>

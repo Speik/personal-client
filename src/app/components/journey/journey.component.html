@@ -1,6 +1,6 @@
 <div
   id="journey"
-  class="relative overflow-hidden min-h-screen max-w-screen p-16 bg-default"
+  class="relative overflow-hidden min-h-screen max-w-screen p-16 xl:px-14 lg:px-12 md:px-10 sm:px-8 xs:px-4 bg-default"
 >
   <app-page-title
     label="My Journey"
@@ -27,8 +27,12 @@
   >
   </app-decoration-grid>
 
-  <div class="relative mt-8 mx-auto z-[1]">
-    <p-timeline [value]="journeyService.journey" align="alternate">
+  <div class="relative mt-8 mx-auto overflow-x-auto w-full z-[1]">
+    <p-timeline
+      [value]="journeyService.journey"
+      align="{{isLargeBreakpoint ? 'top' : 'alternate'}}"
+      layout="{{isLargeBreakpoint ? 'horizontal' : 'vertical'}}"
+    >
       
       <ng-template pTemplate="marker">
         <div
@@ -40,29 +44,29 @@
 
       <ng-template pTemplate="opposite" let-journey>
         <div
-          class="text-white line-height-1 font-title text-xl pt-[0.85rem]"
+          class="text-white line-height-1 font-title text-xl lg:text-sm pt-[0.85rem]"
         >
           {{getJourneyDuration(journey)}}
         </div>
       </ng-template>
 
       <ng-template pTemplate="content" let-journey>
-        <div class="pb-8">
+        <div class="pb-8 lg:pb-0 lg:mr-8 lg:w-[28rem]">
           <div appMouseParallax [parallaxIntensivity]="8">
             <div
               class="font-default shadow-2xl border-b-4 border-b-green-400 bg-card p-4 select-none"
             >
-              <h2 class="font-title font-bold text-3xl text-green-400">
+              <h2 class="font-title font-bold text-3xl lg:text-xl text-green-400">
                 {{ journey.employerName }}
               </h2>
-              <div class="text-xl text-white">
+              <div class="text-xl lg:text-lg text-white">
                 {{ journey.jobTitle }}
               </div>
-              <div class="text-xl text-green-400 pt-4">
+              <div class="text-xl lg:text-lg text-green-400 pt-4">
                 {{ journey.employedAt | date: 'MMM y' }} -
                 {{ journey.leaveAt | date: 'MMM y' }}
               </div>
-              <p class="pb-0 text-xl text-white">
+              <p class="pb-0 text-xl lg:text-lg text-white">
                 {{journey.shortDescription}}
               </p>
               <div class="pt-4">
@@ -91,12 +95,12 @@
     [resizable]="false"
   >
 
-    <ng-template pTemplate="header" class="relative">
+    <ng-template pTemplate="header">
       <h2 class="relative pl-4 border-l-green-400 border-l-4" [ngStyle]="{ zIndex: 2205 }">
-        <div class="text-4xl text-green-400 font-bold font-title mr-2">
+        <div class="text-4xl xl:text-3xl text-green-400 font-bold font-title mr-2">
           {{journeyModalDetails.data?.jobTitle}}
         </div>
-        <div class="text-2xl text-neutral-300 font-bold font-title">
+        <div class="text-2xl xl:text-xl text-neutral-300 font-bold font-title">
           {{journeyModalDetails.data?.employerName}}
         </div>
       </h2>
@@ -114,8 +118,8 @@
       ></app-decoration-circle>
     </ng-template>
 
-    <div class="flex justify-between relative" [ngStyle]="{ zIndex: 2205 }">
-      <div class="w-3/5 space-y-8">
+    <div class="flex lg:block lg:w-9/12 sm:w-full justify-between relative" [ngStyle]="{ zIndex: 2205 }">
+      <div class="w-3/5 xl:w-7/12 lg:w-full space-y-8">
         <p
           class="text-xl text-white font-default pl-4 border-l-green-400 border-l-4"
           *ngFor="let descriptionSegment of getDescriptionSegments(journeyModalDetails.data?.description)"
@@ -123,7 +127,7 @@
           {{descriptionSegment}}
         </p>
       </div>
-      <div class="w-2/5 pl-32">
+      <div class="w-2/5 pl-32 xl:w-5/12 xl:pl-16 lg:pl-0 lg:w-full lg:pt-8">
 
         <div class="text-white text-2xl flex justify-start items-center">
           <div class="flex justify-start items-center">

@@ -1,6 +1,6 @@
 <div
   id="contact"
-  class="relative overflow-hidden min-h-screen max-w-screen p-16 pb-[16rem] bg-default"
+  class="relative overflow-hidden min-h-screen max-w-screen p-16 xl:px-14 lg:px-12 md:px-10 sm:px-8 xs:px-4 pb-[16rem] bg-default"
 >
   <app-page-title
     label="Get in touch"
@@ -26,12 +26,12 @@
   >
   </app-decoration-grid>
 
-  <div class="relative w-3/4 mx-auto z-[1]">
+  <div class="relative w-3/4 lg:w-full mx-auto z-[1]">
     <div class="flex justify-center items-center pt-16">
       <form class="w-full" [formGroup]="contactForm">
-        <div class="grid grid-cols-2 gap-7 w-full">
+        <div class="grid grid-cols-2 md:block md:space-y-6 gap-7 w-full">
 
-          <div>
+          <div class="w-full">
             <span class="p-float-label w-full">
               <input
                 pInputText
@@ -51,7 +51,7 @@
             </span>
           </div>
 
-          <div>
+          <div class="w-full">
             <span class="p-float-label w-full">
               <input
                 pInputText

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+$break2xl: 1535px;
+$breakxl: 1279px;
+$breaklg: 1023px;
+$breakmd: 767px;
+$breaksm: 639px;
+$breakxs: 475px;
+
 @mixin font-title { font-family: 'Orbitron', sans-serif; }
 @mixin font-default { font-family: 'Exo', sans-serif; }
 @mixin bg-card {
@@ -102,19 +109,6 @@ html, body {
   }
 }
 
-.parallelogram {
-  transform: skewX(-10deg);
-	transform-origin: top;
-
-  & > * {
-    transform: skewX(10deg);
-  }
-}
-
-.text-shadow {
-  text-shadow: 0 0 .1rem #eee;
-}
-
 .transparent-chip.p-chip { background-color: transparent !important; }
 
 .details-button.used { animation: none; }
@@ -126,7 +120,15 @@ html, body {
 
   .p-dialog-header {
     background-color: var(--bg-default);
-    padding: 5rem 5rem;
+    padding: 4rem;
+
+    // SCSS doesn't compile with tailwind directives such as @apply,
+    // so here is a crutch
+    @media screen and (max-width: $breakxl) { padding: 3.5rem; }
+    @media screen and (max-width: $breaklg) { padding: 3rem; }
+    @media screen and (max-width: $breakmd) { padding: 2.5rem; }
+    @media screen and (max-width: $breaksm) { padding: 2rem; }
+    @media screen and (max-width: $breakxs) { padding: 1rem; }
 
     .p-dialog-header-icons {
       scale: 1.5;
@@ -135,7 +137,13 @@ html, body {
 
   .p-dialog-content {
     background-color: var(--bg-default);
-    padding: 0rem 5rem 5rem 5rem;
+    padding: 0rem 4rem 4rem 4rem;
+
+    @media screen and (max-width: $breakxl) { padding: 0 3.5rem 3.5rem 3.5rem; }
+    @media screen and (max-width: $breaklg) { padding: 0 3rem 3rem 3rem; }
+    @media screen and (max-width: $breakmd) { padding: 0 2.5rem 2.5rem 2.5rem; }
+    @media screen and (max-width: $breaksm) { padding: 0 2rem 2rem 2rem; }
+    @media screen and (max-width: $breakxs) { padding: 0 1rem 1rem 1rem; }
   }
 }
 

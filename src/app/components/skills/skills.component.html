@@ -1,6 +1,6 @@
 <div
   id="skills"
-  class="relative overflow-hidden min-h-screen max-w-screen px-16 py-8 m-0 bg-dark"
+  class="relative overflow-hidden min-h-screen max-w-screen px-16 xl:px-14 lg:px-12 md:px-10 sm:px-8 xs:px-4 py-8 m-0 bg-dark"
 >
   <app-page-title
     label="Skills"
@@ -33,8 +33,8 @@
     >
   </app-decoration-grid>
 
-  <div class="relative flex py-5 mt-8 z-1">
-    <div class="w-1/3">
+  <div class="relative flex flex-wrap py-5 mt-8 z-1">
+    <div class="w-1/3 lg:w-full">
       <div class="text-white text-2xl font-default space-y-12">
         <p class="pl-4 border-l-green-400 border-l-4">
           I have proficiency both in Backend and Frontend with,
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class="w-2/3 grid grid-cols-2 gap-4 pl-4">
+    <div class="w-2/3 lg:w-full lg:pt-8 lg:pl-0 grid grid-cols-2 sm:grid-cols-1 gap-4 pl-4">
       <div
         appMouseParallax
         *ngFor="let skill of skillsService.skills"
