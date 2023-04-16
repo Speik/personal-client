@@ -17,7 +17,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { MessageModule } from 'primeng/message';
 import { ImageModule } from 'primeng/image';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MouseParallaxDirective } from './directives/mouse-parallax.directive';

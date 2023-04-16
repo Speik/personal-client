@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 import { IJourney } from './journey.model';
 import { JourneyService } from './journey.service';
 import { DateParser, DateParserMode } from 'src/app/utils/date-parser';
 
+const LARGE_BREAKPOINT_WIDTH = 1023;
 const DEFAULT_JOURNEY_DESCRIPTION = '<No Description>';
 
 type JourneyModalDetails = {
@@ -16,7 +17,9 @@ type JourneyModalDetails = {
   templateUrl: './journey.component.html',
 })
 export class JourneyComponent implements OnInit {
-  journeyModalDetails: JourneyModalDetails = {
+  public isLargeBreakpoint: boolean = false;
+
+  public journeyModalDetails: JourneyModalDetails = {
     isVisible: false,
     data: null,
   };
@@ -26,8 +29,14 @@ export class JourneyComponent implements OnInit {
     public dateParser: DateParser
   ) {}
 
+  @HostListener('window:resize')
+  public onResize(): void {
+    this.isLargeBreakpoint = this.detectLargeBreakpoint();
+  }
+
   public ngOnInit(): void {
     this.journeyService.getAll().subscribe();
+    this.isLargeBreakpoint = this.detectLargeBreakpoint();
   }
 
   public onLearnMoreClick(event: MouseEvent, journey: IJourney): void {
@@ -78,5 +87,9 @@ export class JourneyComponent implements OnInit {
 
       return (result += monthsCount);
     }, 0);
+  }
+
+  private detectLargeBreakpoint(): boolean {
+    return window.innerWidth <= LARGE_BREAKPOINT_WIDTH;
   }
 }

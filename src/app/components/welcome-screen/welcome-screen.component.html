@@ -1,5 +1,5 @@
 <div
-  class="relative flex justify-center items-center overflow-hidden min-h-screen max-w-screen px-16 text-white bg-default"
+  class="relative flex justify-center items-center overflow-hidden min-h-screen max-w-screen px-16 xl:px-14 lg:px-12 md:px-10 sm:px-8 xs:px-4 text-white bg-default"
 >
   <app-decoration-grid
     [yPos]="'bottom'"
@@ -20,14 +20,14 @@
 
   <div class="relative z-[1] flex flex-auto justify-center items-center">
     
-    <div class="font-title w-1/2">
+    <div class="font-title w-1/2 lg:w-3/5 md:w-full">
       <div class="text-2xl text-green-400">
         Hi, my name is
       </div>
-      <h1 class="text-6xl font-bold pt-6">
+      <h1 class="text-6xl xl:text-5xl lg:text-4xl font-bold pt-6">
         Kirill Kesarev<span class="text-green-500">.</span>
       </h1>
-      <div class="text-5xl text-300">
+      <div class="text-5xl xl:text-4xl lg:text-4xl text-300">
         I<span class="text-green-500">'</span>m
         Node<span class="text-green-500">.</span>js
         Developer
@@ -49,9 +49,9 @@
       </div>
     </div>
 
-    <div class="flex w-1/2 justify-center items-center">
+    <div class="flex w-1/2 lg:w-2/5 md:hidden justify-center items-center">
       <img
-        class="w-[14rem] h-[14rem] rotate drop-shadow-2xl"
+        class="w-[14rem] h-[14rem] lg:w-[8rem] lg:h-[8rem] rotate drop-shadow-2xl"
         src="/assets/images/node-icon.png"
         (dragstart)="handleDrag()"
       >

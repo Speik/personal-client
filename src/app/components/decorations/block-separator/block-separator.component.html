@@ -1,8 +1,8 @@
-<div class="relative h-[20rem] z-[1] select-none" [ngClass]="{
-  'bg-default': sourceColorName == 'default',
-  'bg-dark': sourceColorName === 'dark'
-}"
-  [ngStyle]="{ 'transform': direction === 'left' ? 'scaleX(-1) rotateX(180deg)' : '' }"
+<div
+  class="relative h-[20rem] lg:h-[16rem] md:h-[12rem] sm:h-[8rem] z-[1] select-none bg-{{sourceColorName}}"
+  [ngClass]="{
+    'rotate-180': direction === 'left'
+  }"
 >
   <div class="w-full h-full">
     <svg
@@ -25,8 +25,7 @@
   
       <polygon
         points="0,74 100,0 100,26 0,100"
-        class="fill-green-600"
-        style="filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.3));"
+        class="fill-green-700"
       />
 
       <polygon
