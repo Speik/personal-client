@@ -17,6 +17,9 @@ type JourneyModalDetails = {
   templateUrl: './journey.component.html',
 })
 export class JourneyComponent implements OnInit {
+  public isLoading = true;
+  public journeyData: IJourney[] = [];
+
   public isLargeBreakpoint: boolean = false;
 
   public journeyModalDetails: JourneyModalDetails = {
@@ -35,7 +38,7 @@ export class JourneyComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.journeyService.getAll().subscribe();
+    this.getJourney();
     this.isLargeBreakpoint = this.detectLargeBreakpoint();
   }
 
@@ -71,19 +74,21 @@ export class JourneyComponent implements OnInit {
   public getJourneyDuration(journey: Nullable<IJourney>): string {
     if (!journey) return '<No duration>';
 
-    const { employedAt, leaveAt } = journey;
+    const startedAt = new Date(journey.startedAt);
+    const endedAt = journey.endedAt ? new Date(journey.endedAt) : new Date();
 
     return this.dateParser.parseMonthsToDuration(
-      this.dateParser.getMonthsBetween(employedAt, leaveAt),
+      this.dateParser.getMonthsBetween(startedAt, endedAt),
       DateParserMode.DEFAULT
     );
   }
 
   private getTotalJourneyMonths(): number {
-    return this.journeyService.journey.reduce((result, item) => {
-      const { employedAt, leaveAt } = item;
+    return this.journeyData.reduce((result, item) => {
+      const startedAt = new Date(item.startedAt);
+      const endedAt = item.endedAt ? new Date(item.endedAt) : new Date();
 
-      const monthsCount = this.dateParser.getMonthsBetween(employedAt, leaveAt);
+      const monthsCount = this.dateParser.getMonthsBetween(startedAt, endedAt);
 
       return (result += monthsCount);
     }, 0);
@@ -91,5 +96,14 @@ export class JourneyComponent implements OnInit {
 
   private detectLargeBreakpoint(): boolean {
     return window.innerWidth <= LARGE_BREAKPOINT_WIDTH;
+  }
+
+  private getJourney(): void {
+    this.isLoading = true;
+
+    this.journeyService.getJourney().subscribe((journey) => {
+      this.journeyData = journey;
+      this.isLoading = false;
+    });
   }
 }

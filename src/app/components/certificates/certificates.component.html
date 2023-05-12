@@ -4,7 +4,7 @@
 >
   <app-page-title
     label="My Certificates"
-    tooltip="Currently I have {{getCertificatesCount()}} certificates"
+    tooltip="Currently I have {{certificatesData.length}} certificates"
     icon="verified"
     reference="certificates"
   ></app-page-title>
@@ -35,7 +35,7 @@
       appMouseParallax
       [parallaxIntensivity]="7"
       class="relative min-w-[40%] pt-[25%] lg:min-w-[50%] lg:pt-[30%] md:min-w-[75%] md:pt-[45%] sm:min-w-full sm:pt-[50%] max-w-full"
-      *ngFor="let certificate of certificatesService.certificates"
+      *ngFor="let certificate of certificatesData"
     >
       <div class="absolute left-0 top-0 w-full h-full bg-card shadow-xl select-none cursor-pointer">
         <div class="certificate relative flex flex-col justify-start p-4 text-center h-full">
@@ -54,12 +54,18 @@
 
             <a
               class="certificate-preview-link"
-              href="{{certificate.credentialUrl}}"
               target="_blank"
+              href="{{
+                certificate.credentialUrl.startsWith('http')
+                  ? certificate.credentialUrl
+                  : 'http://' + certificate.credentialUrl
+              }}"
             >
               <div
                 class="w-full h-full bg-cover bg-no-repeat bg-center"
-                style="background-image: url({{certificate.imageUrl}})"
+                [ngStyle]="{
+                  backgroundImage: 'url(' + getImageUrl(certificate.thumbnail) + ')'
+                }"
               >
               </div>
             </a>

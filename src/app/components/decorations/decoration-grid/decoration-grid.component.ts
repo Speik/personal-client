@@ -8,9 +8,9 @@ type DecorationGridPositionY = 'bottom' | 'top';
   templateUrl: './decoration-grid.component.html',
 })
 export class DecorationGridComponent {
-  @Input() xPos: DecorationGridPositionX = 'left';
-  @Input() yPos: DecorationGridPositionY = 'bottom';
-  @Input() zIndex: number = 0;
+  @Input() public xPos: DecorationGridPositionX = 'left';
+  @Input() public yPos: DecorationGridPositionY = 'bottom';
+  @Input() public zIndex: number = 0;
 
   public handleDrag() {
     return false;

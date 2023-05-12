@@ -7,6 +7,8 @@ import {
   AfterViewInit,
 } from '@angular/core';
 
+import { CvDownloadService } from 'src/app/utils/cv-download.service';
+
 const PERSONAL_EMAIL = 'speik0102@gmail.com';
 const NAVBAR_HEIGHT_BIAS = 0.75;
 
@@ -30,8 +32,9 @@ export class NavigationComponent implements AfterViewInit {
 
   public navlinks: NavlinkData[] = [];
 
-  constructor(
+  public constructor(
     @Inject(DOCUMENT) private document: Document,
+    private cvDownloadService: CvDownloadService,
     private el: ElementRef
   ) {}
 
@@ -74,6 +77,10 @@ export class NavigationComponent implements AfterViewInit {
     });
 
     this.isSidebarVisible = false;
+  }
+
+  public downloadCv(): void {
+    this.cvDownloadService.downloadCv().subscribe();
   }
 
   private getPageScrolledPercents(): number {

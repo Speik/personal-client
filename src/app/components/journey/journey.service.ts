@@ -1,23 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, share } from 'rxjs';
 
 import { IJourney } from './journey.model';
-import { journey } from './journey.storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JourneyService {
-  journey: IJourney[] = [];
+  public constructor(private http: HttpClient) {}
 
-  getAll(): Observable<IJourney[]> {
-    return new Observable<IJourney[]>((subscriber) => {
-      subscriber.next(journey);
-      subscriber.complete();
-    }).pipe(
-      tap((journeyData) => {
-        this.journey = journeyData;
-      })
-    );
+  public getJourney(): Observable<IJourney[]> {
+    return this.http.get<IJourney[]>('journey').pipe(share());
   }
 }

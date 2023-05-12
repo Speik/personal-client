@@ -8,9 +8,9 @@ type BlockSeparatorDirection = 'right' | 'left';
   templateUrl: './block-separator.component.html',
 })
 export class BlockSeparatorComponent implements OnInit {
-  @Input() sourceColorName: BackgroundColorName = 'default';
-  @Input() targetColorName: BackgroundColorName = 'dark';
-  @Input() direction: BlockSeparatorDirection = 'right';
+  @Input() public sourceColorName: BackgroundColorName = 'default';
+  @Input() public targetColorName: BackgroundColorName = 'dark';
+  @Input() public direction: BlockSeparatorDirection = 'right';
 
   public ngOnInit(): void {
     if (this.direction === 'left') {

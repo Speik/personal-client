@@ -7,9 +7,9 @@ type PageTitlePosition = 'center' | 'left' | 'right';
   templateUrl: './page-title.component.html',
 })
 export class PageTitleComponent {
-  @Input() position: PageTitlePosition = 'center';
-  @Input() icon: Optional<string>;
-  @Input() reference: Optional<string>;
-  @Input() label: Optional<string>;
-  @Input() tooltip: Optional<string>;
+  @Input() public position: PageTitlePosition = 'center';
+  @Input() public icon: Optional<string>;
+  @Input() public reference: Optional<string>;
+  @Input() public label: Optional<string>;
+  @Input() public tooltip: Optional<string>;
 }

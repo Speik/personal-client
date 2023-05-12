@@ -1,27 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, share } from 'rxjs';
 
 import { ISkill } from './skills.model';
-import { skills } from './skills.storage';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SkillsService {
-  skills: ISkill[] = [];
+  public constructor(private http: HttpClient) {}
 
-  getAll(): Observable<ISkill[]> {
-    return new Observable<ISkill[]>((subscriber) => {
-      subscriber.next(skills);
-      subscriber.complete();
-    }).pipe(
-      tap((skillsData) => {
-        this.skills = this.sortSkillsByProficiency(skillsData);
-      })
-    );
-  }
-
-  private sortSkillsByProficiency(skills: ISkill[]): ISkill[] {
-    return skills.sort((a, b) => b.proficiency - a.proficiency);
+  public getSkills(): Observable<ISkill[]> {
+    return this.http.get<ISkill[]>('skills').pipe(share());
   }
 }

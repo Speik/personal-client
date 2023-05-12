@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CvDownloadService } from 'src/app/utils/cv-download.service';
 
 type SocialLink = {
   label: string;
@@ -9,22 +10,22 @@ type SocialLink = {
 const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'LinkedIn',
-    url: '',
+    url: 'https://www.linkedin.com/in/speik/',
     iconName: 'linkedin',
   },
   {
     label: 'Telegram',
-    url: '',
+    url: 'https://t.me/speik0102',
     iconName: 'telegram',
   },
   {
     label: 'GitHub',
-    url: '',
+    url: 'https://github.com/Speik',
     iconName: 'github',
   },
   {
     label: 'Facebook',
-    url: '',
+    url: 'https://www.facebook.com/ssspeik/',
     iconName: 'facebook',
   },
 ];
@@ -34,9 +35,15 @@ const SOCIAL_LINKS: SocialLink[] = [
   templateUrl: './footer.component.html',
 })
 export class FooterComponent {
-  socialLinks: SocialLink[] = SOCIAL_LINKS;
+  public socialLinks: SocialLink[] = SOCIAL_LINKS;
 
-  getCurrentYear(): number {
+  public constructor(private cvDownloadService: CvDownloadService) {}
+
+  public getCurrentYear(): number {
     return new Date().getFullYear();
+  }
+
+  public downloadCv(): void {
+    this.cvDownloadService.downloadCv().subscribe();
   }
 }

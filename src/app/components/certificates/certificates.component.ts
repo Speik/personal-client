@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CertificatesService } from './certificates.service';
+import { ICertificate } from './certificates.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-certificates',
@@ -7,13 +9,25 @@ import { CertificatesService } from './certificates.service';
   styleUrls: ['./certificates.component.scss'],
 })
 export class CertificatesComponent implements OnInit {
-  constructor(public certificatesService: CertificatesService) {}
+  public isLoading = true;
+  public certificatesData: ICertificate[] = [];
+
+  public constructor(public certificatesService: CertificatesService) {}
 
   public ngOnInit(): void {
-    this.certificatesService.getAll().subscribe();
+    this.getCertificates();
   }
 
-  public getCertificatesCount(): string {
-    return String(this.certificatesService.certificates.length);
+  public getImageUrl(filename: string): string {
+    return `${environment.baseStorageUrl}/${filename}`;
+  }
+
+  private getCertificates(): void {
+    this.isLoading = true;
+
+    this.certificatesService.getCertificates().subscribe((certificates) => {
+      this.certificatesData = certificates;
+      this.isLoading = false;
+    });
   }
 }

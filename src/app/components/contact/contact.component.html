@@ -75,23 +75,23 @@
               <textarea
                 pInputTextarea
                 class="p-inputtext-lg min-h-[20rem] w-full font-default bg-card text-white border-neutral-800 border-2 focus:outline-none focus:shadow-none focus:border-green-400"
-                id="contactMessage"
-                name="message"
+                id="contactText"
+                name="text"
                 [autoResize]="true"
-                formControlName="message"
-                minlength="{{minMessageLength}}"
-                maxlength="{{maxMessageLength}}"
+                formControlName="text"
+                minlength="{{minTextLength}}"
+                maxlength="{{maxTextLength}}"
                 ></textarea>
               <label
-                for="contactMessage"
+                for="contactText"
                 class="font-title text-green-400"
               >
-                * Message
+                * Text
               </label>
             </span>
             <div class="text-sm text-neutral-400">
-              {{contactForm.controls['message'].value?.trim()?.length ?? 0}} /
-              <span class="text-green-400">{{maxMessageLength}}</span>
+              {{contactForm.controls['text'].value?.trim()?.length ?? 0}} /
+              <span class="text-green-400">{{maxTextLength}}</span>
             </div>
           </div>
 

@@ -5,18 +5,18 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './welcome-screen.component.html',
 })
 export class WelcomeScreenComponent {
-  isPageScrolled = false;
+  public isPageScrolled = false;
 
   @HostListener('window:scroll', [])
-  onWindowScroll(): void {
+  public onWindowScroll(): void {
     this.isPageScrolled = window.scrollY > 100;
   }
 
-  handleDrag() {
+  public handleDrag() {
     return false;
   }
 
-  handleLearnMore(): void {
+  public handleLearnMore(): void {
     const scrollPoint = window.innerHeight + 100;
 
     window.scroll({

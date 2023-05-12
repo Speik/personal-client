@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
@@ -24,6 +25,7 @@ import { MouseParallaxDirective } from './directives/mouse-parallax.directive';
 
 import { DateParser } from './utils/date-parser';
 import { FormUtils } from './utils/form-utils';
+import { PrimaryHttpInterceptor } from './http/http.interceptor';
 
 import { DecorationGridComponent } from './components/decorations/decoration-grid/decoration-grid.component';
 import { DecorationCircleComponent } from './components/decorations/decoration-circle/decoration-circle.component';
@@ -60,6 +62,7 @@ import { CertificatesComponent } from './components/certificates/certificates.co
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     ButtonModule,
     TimelineModule,
@@ -76,7 +79,15 @@ import { CertificatesComponent } from './components/certificates/certificates.co
     MessageModule,
     ImageModule,
   ],
-  providers: [DateParser, FormUtils],
+  providers: [
+    DateParser,
+    FormUtils,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PrimaryHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

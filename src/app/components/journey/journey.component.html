@@ -29,7 +29,7 @@
 
   <div class="relative mt-8 mx-auto overflow-x-auto w-full z-[1]">
     <p-timeline
-      [value]="journeyService.journey"
+      [value]="journeyData"
       align="{{isLargeBreakpoint ? 'top' : 'alternate'}}"
       layout="{{isLargeBreakpoint ? 'horizontal' : 'vertical'}}"
     >
@@ -138,10 +138,13 @@
             </div>
             <div class="pl-3">
               <div>
-                {{journeyModalDetails.data?.employedAt | date: 'MMM, y'}}
+                {{journeyModalDetails.data?.startedAt | date: 'MMM, y'}}
               </div>
-              <div>
-                {{journeyModalDetails.data?.leaveAt | date: 'MMM, y'}}
+              <div *ngIf="journeyModalDetails.data?.endedAt">
+                {{journeyModalDetails.data?.endedAt | date: 'MMM, y'}}
+              </div>
+              <div *ngIf="!journeyModalDetails.data?.endedAt">
+                Present
               </div>
               <div class="pt-3">
                 {{getJourneyDuration(journeyModalDetails.data)}}

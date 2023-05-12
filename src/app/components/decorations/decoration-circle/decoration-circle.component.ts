@@ -15,10 +15,10 @@ const CIRCLE_PERCENT_SIZES = new Map<DecorationCircleSize, number>([
   templateUrl: './decoration-circle.component.html',
 })
 export class DecorationCircleComponent implements OnInit {
-  @Input() size: DecorationCircleSize = 'medium';
-  @Input() xPos: DecorationCirclePositionX = 'left';
-  @Input() yPos: DecorationCirclePositionY = 'bottom';
-  @Input() zIndex: number = 0;
+  @Input() public size: DecorationCircleSize = 'medium';
+  @Input() public xPos: DecorationCirclePositionX = 'left';
+  @Input() public yPos: DecorationCirclePositionY = 'bottom';
+  @Input() public zIndex: number = 0;
 
   /**
    * Just applies shorthand for circle size if specified,
